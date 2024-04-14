@@ -1,5 +1,5 @@
 export interface ContentfulImage {
   altText: string
-  blur: string
+  blur?: string
   url: string
 }
