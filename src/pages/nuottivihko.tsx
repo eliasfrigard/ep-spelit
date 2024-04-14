@@ -3,9 +3,6 @@ import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
 
 import { createClient } from 'contentful'
-import { ContentfulImage } from '../types'
-import { getImageBuffer } from 'eliasfrigard-reusable-components'
-import { getPlaiceholder } from 'plaiceholder'
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -19,44 +16,27 @@ export async function getStaticProps() {
 
   const page = pageRes.items[0].fields
 
-  const banner: any = page?.banner
-
-  const heroUrl = 'https:' + banner?.fields.file.url
-  const bannerBuffer = await getImageBuffer(heroUrl)
-  const { base64: bannerBlur } = await getPlaiceholder(bannerBuffer)
-
-  const bannerImage: ContentfulImage = {
-    altText: banner?.fields?.title,
-    blur: bannerBlur,
-    url: heroUrl,
-  }
-
   return {
     props: {
-      banner: bannerImage,
       textContent: page.textContent,
     },
   }
 }
 
-export default function Home({
-  banner,
+export default function Nuottivihko({
   textContent,
 } : {
-  banner: ContentfulImage,
-  textContent: any
+  textContent: any 
 }) {
   return (
     <Layout>
       <div className='relative h-[50vh]'>
       <Image
-        className={`object-cover`}
-        alt={banner.altText}
-        src={banner.url + '?w=3440'}
+        alt="Johannes Sarjasto playing accordion in a field"
+        src="/etel-pohjalaiset-spelit-logo-copy-1_3.jpeg"
         fill
         sizes="(min-width: 768px) 80vw, 100vw"
-        placeholder={banner?.blur ? 'blur' : 'empty'}
-        blurDataURL={banner?.blur}
+        className={`object-cover`}
       />
       </div>
 

@@ -9,9 +9,9 @@ const Hamburger = ({
   }) => {
   return (
     <div className='burger' onClick={handleClick}>
-      <div className={`burgerLine duration-300 ${active && 'transform rotate-45 translate-y-[4px]'}`}></div>
-      <div className={`burgerLine duration-300 ${active && 'hidden'}`}></div>
-      <div className={`burgerLine duration-300 ${active && 'transform -rotate-45 -translate-y-[5px]'}`}></div>
+      <div className={`burgerLine duration-300 ${active ? 'transform rotate-45 translate-y-[4px]' : 'bg-black'}`}></div>
+      <div className={`burgerLine duration-300 ${active ? 'hidden' : 'bg-black'}`}></div>
+      <div className={`burgerLine duration-300 ${active ? 'transform -rotate-45 -translate-y-[5px]' : 'bg-black'}`}></div>
     </div>
   )
 }

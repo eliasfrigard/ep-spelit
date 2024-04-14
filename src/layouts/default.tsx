@@ -43,6 +43,10 @@ export default function Layout({
 
   const routes = [
     { href: '/', label: 'etusivu' },
+    { href: '/esiintyjat', label: 'esiintyjät' },
+    { href: '/nuottivihko', label: 'nuottivihko' },
+    { href: '/historia', label: 'historia' },
+    { href: '/hallitus', label: 'hallitus' },
   ]
 
   const socialMedia = {

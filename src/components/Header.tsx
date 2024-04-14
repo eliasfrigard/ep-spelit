@@ -98,7 +98,7 @@ const Header = ({
           items-center
           h-[85px]
           w-full
-          ${!transparent && scrolled ? 'shadow-xl text-primary-300' : 'text-primary-300'}
+          ${scrolled ? 'shadow-xl text-primary-300' : 'text-black'}
           duration-500
           tracking-wide
           px-8
@@ -107,8 +107,8 @@ const Header = ({
         >
           <div id='left' className='text-center'>
             <Link className='flex flex-col gap-1 cursor-pointer text-sm font-bold tracking-widest uppercase' href='/'>
-              <p>Eteläpohjalaiset Spelit</p>
-              <p className=' font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
+              <p className='duration-200'>{pageName}</p>
+              <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
           </div>
           <div id='center' className='flex justify-center items-center tracking-widest'>
@@ -169,8 +169,7 @@ const Header = ({
           items-center
           h-[85px]
           tracking-wide
-          ${!transparent || scrolled ? 'backdrop-blur bg-primary-700' : ''}
-          text-primary-300
+          ${scrolled ? 'backdrop-blur bg-primary-700 text-primary-300' : 'text-black'}
           px-8
           duration-300
           ${font}
@@ -179,7 +178,7 @@ const Header = ({
           <div>
             <Link className={`${titleHidden ? 'hidden' : 'flex'} flex-col text-center gap-1 cursor-pointer text-[10px] md:text-[14px] font-bold tracking-widest uppercase`} href='/'>
               <p>{pageName}</p>
-              <p className=' font-normal text-[9px] md:text-[13px]'>Musician / Artist / Hurdy-Gurdy</p>
+              <p className=' font-normal text-[9px] md:text-[13px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
           </div>
           <div>
