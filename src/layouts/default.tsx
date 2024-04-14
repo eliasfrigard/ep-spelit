@@ -43,6 +43,7 @@ export default function Layout({
 
   const routes = [
     { href: '/', label: 'etusivu' },
+    { href: '/loiskeet', label: 'loiskeet' },
     { href: '/esiintyjat', label: 'esiintyjät' },
     { href: '/nuottivihko', label: 'nuottivihko' },
     { href: '/historia', label: 'historia' },

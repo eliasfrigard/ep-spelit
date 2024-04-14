@@ -39,9 +39,9 @@ export default function Home({
 }) {
   return (
     <Layout>
-      <div className='w-full flex flex-col justify-center items-center pb-4 pt-4 md:py-8 gap-8 px-6'>
+      <div className='w-full flex flex-col justify-center items-center pb-4 pt-4 md:py-16 gap-8 px-6'>
         {/* <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' /> */}
-        <div className="container w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-wrap">
+        <div className="container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 flex-wrap">
           {
             members.map((member: any) => {
               const photograph = member.fields.photo ? {
@@ -68,7 +68,7 @@ export default function Home({
           <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>
             {/* <Title title='Downloads' textColor='text-primary-950' borderColor='border-primary-500' /> */}
             <div
-              className={`grid grid-flow-row gap-6 md:gap-4 ${files.length > 1 && 'md:grid-cols-2'
+              className={`grid grid-flow-row gap-6 md:gap-8 ${files.length > 1 && 'md:grid-cols-2'
             }`}
             >
               {files.map((file) => (

@@ -11,7 +11,8 @@ export async function getStaticProps() {
   })
 
   const pageRes = await contentful.getEntries({
-    content_type: 'homePage',
+    content_type: 'contentPage',
+    'fields.title': 'Historia'
   })
 
   const page = pageRes.items[0].fields

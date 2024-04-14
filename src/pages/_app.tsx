@@ -4,6 +4,7 @@ import type { AppProps } from "next/app"
 import { Montserrat } from 'next/font/google'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import '../styles/globals.css'
+import { ThemeProvider } from "@material-tailwind/react";
 
 // Define Montserrat font
 const mont = Montserrat({
@@ -15,12 +16,14 @@ const mont = Montserrat({
 
 const MyApp = ({ Component, pageProps } : AppProps) => {
   return (
-    <ParallaxProvider>
-      <div id="__next" className={`${mont.className} font-mont`}>
-        <Script src="/static/script.js" />
-        <Component {...pageProps} />
-      </div>
-    </ParallaxProvider>
+    <ThemeProvider>
+      <ParallaxProvider>
+        <div id="__next" className={`${mont.className} font-mont`}>
+          <Script src="/static/script.js" />
+          <Component {...pageProps} />
+        </div>
+      </ParallaxProvider>
+    </ThemeProvider>
   );
 };
 

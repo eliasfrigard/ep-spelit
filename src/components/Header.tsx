@@ -46,7 +46,7 @@ const Header = ({
   const activeLinkStyling = (path: string) => {
     if (currentRoute !== path) return
 
-    const style = 'font-bold'
+    const style = 'font-bold text-accent-500'
 
     if (currentRoute.startsWith(path)) return style
   }
@@ -87,6 +87,7 @@ const Header = ({
           ${!transparent || scrolled ? 'backdrop-blur bg-primary-700' : ''}
           bg-opacity-80 
           duration-500
+          shadow-lg
         `}
       >
         <div
@@ -116,7 +117,7 @@ const Header = ({
               <Link
                 key={route.href}
                 href={route.href}
-                className={`${activeLinkStyling(route.href)} desktopNavLink capitalize text-sm`}
+                className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium`}
                 >
                 {route.label}
               </Link>
@@ -130,12 +131,12 @@ const Header = ({
             )}
             {socialMedia?.email && (
               <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
-                <AiOutlineMail className='soMeIcon text-[1.4rem] antialiased' />
+                <AiOutlineMail className='soMeIcon text-[1.5rem] antialiased' />
               </a>
             )}
             {socialMedia?.facebook && (
               <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
-                <BsFacebook className='soMeIcon text-lg' />
+                <BsFacebook className='soMeIcon text-xl' />
               </a>
             )}
             {socialMedia?.instagram && (

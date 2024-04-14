@@ -70,10 +70,6 @@ a {
     background-clip: padding-box;
     transition-duration: 200ms;
   }
-  
-  .desktopNavLink:hover {
-    /* color: theme('colors.accent.500'); */
-  }
 
   .burger {
     cursor: pointer;

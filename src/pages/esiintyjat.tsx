@@ -63,7 +63,7 @@ export default function Home({
             blurDataURL={banner?.blur}
             />
         </div>
-        <div className='py-16 flex flex-col gap-16'>
+        <div className='py-8 lg:py-16 flex flex-col gap-8 lg:gap-16'>
         {
           textContent && (
             <TextLayout text={textContent} className='text-primary-600' />
