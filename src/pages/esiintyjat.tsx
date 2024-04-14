@@ -1,8 +1,12 @@
 import Image from 'next/image'
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
+import Artist from '@/components/Artist'
 
 import { createClient } from 'contentful'
+import { ContentfulImage } from '../types'
+import { getImageBuffer } from 'eliasfrigard-reusable-components'
+import { getPlaiceholder } from 'plaiceholder'
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -11,37 +15,70 @@ export async function getStaticProps() {
   })
 
   const pageRes = await contentful.getEntries({
-    content_type: 'homePage',
+    content_type: 'artistsPage',
   })
 
   const page = pageRes.items[0].fields
 
+  const banner: any = page?.banner
+
+  const bannerUrl = 'https:' + banner?.fields.file.url
+  const bannerBuffer = await getImageBuffer(bannerUrl)
+  const { base64: bannerBlur } = await getPlaiceholder(bannerBuffer)
+
+  const bannerImage: ContentfulImage = {
+    altText: banner?.fields?.title,
+    blur: bannerBlur,
+    url: bannerUrl,
+  }
+
   return {
     props: {
+      banner: bannerImage,
       textContent: page.textContent,
+      artists: page.artists,
     },
   }
 }
 
 export default function Home({
+  banner,
   textContent,
+  artists
 } : {
-  textContent: any 
+  banner: ContentfulImage,
+  textContent: any
+  artists: any[]
 }) {
   return (
-    <Layout>
-      <div className='relative h-[50vh]'>
-      <Image
-        alt="Johannes Sarjasto playing accordion in a field"
-        src="/etel-pohjalaiset-spelit-logo-copy-1_3.jpeg"
-        fill
-        sizes="(min-width: 768px) 80vw, 100vw"
-        className={`hidden md:block object-cover`}
-      />
-      </div>
+    <Layout pageTitle='Esiintyjät'>
+        <div className='relative h-[50vh]'>
+          <Image
+            className={`object-cover`}
+            alt={banner.altText}
+            src={banner.url + '?w=3440'}
+            fill
+            sizes="(min-width: 768px) 80vw, 100vw"
+            placeholder={banner?.blur ? 'blur' : 'empty'}
+            blurDataURL={banner?.blur}
+            />
+        </div>
+        <div className='py-16 flex flex-col gap-16'>
+        {/* <div>
+          <TextLayout text={textContent} className='text-primary-600' />
+        </div> */}
 
-      <div className="py-8">
-        <TextLayout text={textContent} className='text-primary-600' />
+        {
+          artists.map((artist: any) => {
+            return (
+              <Artist 
+              key={artist.sys.id} 
+              name={artist.fields.name}
+              textContent={artist.fields.description}
+              />
+            );
+          })
+        }
       </div>
     </Layout>
   )

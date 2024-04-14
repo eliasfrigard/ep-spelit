@@ -21,14 +21,14 @@ export async function getStaticProps() {
 
   const banner: any = page?.banner
 
-  const heroUrl = 'https:' + banner?.fields.file.url
-  const bannerBuffer = await getImageBuffer(heroUrl)
+  const bannerUrl = 'https:' + banner?.fields.file.url
+  const bannerBuffer = await getImageBuffer(bannerUrl)
   const { base64: bannerBlur } = await getPlaiceholder(bannerBuffer)
 
   const bannerImage: ContentfulImage = {
     altText: banner?.fields?.title,
     blur: bannerBlur,
-    url: heroUrl,
+    url: bannerUrl,
   }
 
   return {
