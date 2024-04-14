@@ -64,9 +64,11 @@ export default function Home({
             />
         </div>
         <div className='py-16 flex flex-col gap-16'>
-        {/* <div>
-          <TextLayout text={textContent} className='text-primary-600' />
-        </div> */}
+        {
+          textContent && (
+            <TextLayout text={textContent} className='text-primary-600' />
+          )
+        }
 
         {
           artists.map((artist: any) => {
