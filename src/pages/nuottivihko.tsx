@@ -30,7 +30,7 @@ export default function Nuottivihko({
   textContent: any 
 }) {
   return (
-    <Layout>
+    <Layout pageTitle='Nuottivihko'>
       <div className='relative h-[50vh]'>
       <Image
         alt="Johannes Sarjasto playing accordion in a field"

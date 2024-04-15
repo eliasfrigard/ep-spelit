@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import Hamburger from './Hamburger'
 import AnimateIn from './AnimateIn'
@@ -87,7 +88,7 @@ const Header = ({
           ${!transparent || scrolled ? 'backdrop-blur bg-primary-700' : ''}
           bg-opacity-80 
           duration-500
-          shadow-lg
+          ${transparent ? '' : 'shadow-lg'}
         `}
       >
         <div
@@ -106,7 +107,15 @@ const Header = ({
           ${font}
         `}
         >
-          <div id='left' className='text-center'>
+          <div id='left' className='text-center flex gap-3 justify-center items-center'>
+            <div className='relative h-14 aspect-square'>
+              <Image 
+                src='/Spelit-logo-pieni-transparent.png'
+                alt='Kansanmusiikkiyhdistys ry. logo'
+                fill
+                className="object-cover object-center"
+              />
+            </div>
             <Link className='flex flex-col gap-1 cursor-pointer text-sm font-bold tracking-widest uppercase' href='/'>
               <p className='duration-200'>{pageName}</p>
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>

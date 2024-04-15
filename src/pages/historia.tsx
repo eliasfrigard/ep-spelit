@@ -30,7 +30,7 @@ export default function Home({
   textContent: any 
 }) {
   return (
-    <Layout>
+    <Layout pageTitle='Historia'>
       <div className='relative h-[50vh]'>
       <Image
         alt="Johannes Sarjasto playing accordion in a field"

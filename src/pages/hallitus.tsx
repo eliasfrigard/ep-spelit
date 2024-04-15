@@ -38,7 +38,7 @@ export default function Home({
   files: any[] 
 }) {
   return (
-    <Layout>
+    <Layout transparent={true} pageTitle='Hallitus'>
       <div className='w-full flex flex-col justify-center items-center pb-4 pt-4 md:py-16 gap-8 px-6'>
         {/* <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' /> */}
         <div className="container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 flex-wrap">
