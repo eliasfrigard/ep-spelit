@@ -22,7 +22,6 @@ const Card = ({
       return words.map(word => word[0].toUpperCase()).join("");
     }
 
-  console.log(getInitials(name))
   return (
     <div className={`flex flex-col justify-center text-center gap-4 items-center ${className}`}>
       {
