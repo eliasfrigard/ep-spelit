@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
+import Form from '@/components/Form'
 
 import { createClient } from 'contentful'
 
@@ -43,6 +44,10 @@ export default function Nuottivihko({
 
       <div className="py-8">
         <TextLayout text={textContent} className='text-primary-600' />
+      </div>
+
+      <div className='flex justify-center items-center'>
+        <Form />
       </div>
     </Layout>
   )
