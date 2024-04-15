@@ -108,14 +108,12 @@ const Header = ({
         `}
         >
           <div id='left' className='text-center flex gap-3 justify-center items-center'>
-            <div className='relative h-14 aspect-square'>
-              <Image 
-                src='/Spelit-logo-pieni-transparent.png'
-                alt='Kansanmusiikkiyhdistys ry. logo'
-                fill
-                className="object-cover object-center"
-              />
-            </div>
+            <Image 
+              src='/Spelit-logo-pieni-transparent.png'
+              alt='Kansanmusiikkiyhdistys ry. logo'
+              width={50}
+              height={50}
+            />
             <Link className='flex flex-col gap-1 cursor-pointer text-sm font-bold tracking-widest uppercase' href='/'>
               <p className='duration-200'>{pageName}</p>
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
@@ -180,15 +178,25 @@ const Header = ({
           h-[85px]
           tracking-wide
           ${scrolled ? 'backdrop-blur bg-primary-700 text-primary-300' : 'text-black'}
-          px-8
+          px-6
           duration-300
           ${font}
         `}
         >
           <div>
             <Link className={`${titleHidden ? 'hidden' : 'flex'} flex-col text-center gap-1 cursor-pointer text-[10px] md:text-[14px] font-bold tracking-widest uppercase`} href='/'>
-              <p>{pageName}</p>
-              <p className=' font-normal text-[9px] md:text-[13px]'>Kansanmusiikkiyhdistys ry.</p>
+              <div id='left' className='text-center flex gap-3 justify-center items-center'>
+                <Image 
+                  src='/Spelit-logo-pieni-transparent.png'
+                  alt='Kansanmusiikkiyhdistys ry. logo'
+                  width={40}
+                  height={40}
+                />
+                <div>
+                  <p>{pageName}</p>
+                  <p className=' font-normal text-[9px] md:text-[13px]'>Kansanmusiikkiyhdistys ry.</p>
+                </div>
+              </div>
             </Link>
           </div>
           <div>
