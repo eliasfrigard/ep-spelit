@@ -15,8 +15,8 @@ const Footer = ({
   }, [])
 
   return (
-    <div className='bg-primary-50 absolute w-full flex justify-center py-12 px-8 md:px-0 bg-primary-600 text-white'>
-      <div className='container flex flex-wrap gap-y-8 px-8'>
+    <div className='bg-primary-50 absolute w-full flex justify-center py-10 lg:py-12 px-8 md:px-0 bg-primary-600 text-white'>
+      <div className='container flex flex-wrap gap-y-8 lg:px-0'>
         <div className='order-1 w-1/4 min-w-[250px] flex flex-col gap-2 text-sm opacity-60'>
           <p className='font-bold'>Eteläpohjalaiset Spelit</p>
           <p className='text-xs'>Kansanmusiikkiyhdistys ry</p>
@@ -40,7 +40,7 @@ const Footer = ({
         </div>
         <div className='order-4 w-1/4 min-w-[250px] flex flex-col gap-2 text-sm opacity-60'>
           <p className='font-bold'>
-            Copyright {currentYear} © {pageName}
+            Copyright {currentYear} © {pageName} Kansanmusiikkiyhdistys ry.
           </p>
           <p className='text-xs'>Website by {author}</p>
         </div>
