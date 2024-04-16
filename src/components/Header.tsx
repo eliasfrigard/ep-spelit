@@ -200,7 +200,7 @@ const Header = ({
             </Link>
           </div>
           <div>
-            <Hamburger handleClick={toggleMobileNav} active={mobileNavOpen}></Hamburger>
+            <Hamburger scrolled={scrolled} handleClick={toggleMobileNav} active={mobileNavOpen}></Hamburger>
           </div>
         </div>
       </div>
