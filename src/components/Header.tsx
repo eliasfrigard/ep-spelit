@@ -114,7 +114,7 @@ const Header = ({
               width={50}
               height={50}
             />
-            <Link className='flex flex-col gap-1 cursor-pointer text-sm font-bold tracking-widest uppercase' href='/'>
+            <Link className='flex flex-col gap-1 cursor-pointer text-sm font-bold tracking-widest uppercase text-start' href='/'>
               <p className='duration-200'>{pageName}</p>
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
@@ -177,7 +177,7 @@ const Header = ({
           items-center
           h-[85px]
           tracking-wide
-          ${scrolled ? 'backdrop-blur bg-primary-700 text-primary-300' : 'text-black'}
+          ${mobileNavOpen || scrolled ? 'backdrop-blur bg-primary-700 text-primary-300' : 'text-black'}
           px-6
           duration-300
           ${font}
@@ -185,7 +185,7 @@ const Header = ({
         >
           <div>
             <Link className={`${titleHidden ? 'hidden' : 'flex'} flex-col text-center gap-1 cursor-pointer text-[10px] md:text-[14px] font-bold tracking-widest uppercase`} href='/'>
-              <div id='left' className='text-center flex gap-3 justify-center items-center'>
+              <div id='left' className='text-start flex gap-3 justify-center items-center'>
                 <Image 
                   src='/Spelit-logo-pieni-transparent.png'
                   alt='Kansanmusiikkiyhdistys ry. logo'
