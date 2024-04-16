@@ -4,6 +4,9 @@ import TextLayout from "@/components/TextLayout"
 import Form from '@/components/Form'
 
 import { createClient } from 'contentful'
+import { ContentfulImage } from '../types'
+import { getImageBuffer } from 'eliasfrigard-reusable-components'
+import { getPlaiceholder } from 'plaiceholder'
 
 export async function getStaticProps() {
   const contentful = createClient({
@@ -18,28 +21,44 @@ export async function getStaticProps() {
 
   const page = pageRes.items[0].fields
 
+  const banner: any = page?.banner
+
+  const bannerUrl = 'https:' + banner?.fields.file.url
+  const bannerBuffer = await getImageBuffer(bannerUrl)
+  const { base64: bannerBlur } = await getPlaiceholder(bannerBuffer)
+
+  const bannerImage: ContentfulImage = {
+    altText: banner?.fields?.title,
+    blur: bannerBlur,
+    url: bannerUrl,
+  }
+
   return {
     props: {
+      banner: bannerImage,
       textContent: page.textContent,
     },
   }
 }
-
-export default function Nuottivihko({
+export default function Loiskeet({
+  banner,
   textContent,
 } : {
+  banner: ContentfulImage,
   textContent: any 
 }) {
   return (
     <Layout pageTitle='Loiskeet'>
       <div className='relative h-[50vh]'>
-      <Image
-        alt="Johannes Sarjasto playing accordion in a field"
-        src="/etel-pohjalaiset-spelit-logo-copy-1_3.jpeg"
-        fill
-        sizes="(min-width: 768px) 80vw, 100vw"
-        className={`object-cover`}
-      />
+        <Image
+          className={`object-cover`}
+          alt={banner.altText}
+          src={banner.url + '?w=3440'}
+          fill
+          sizes="(min-width: 768px) 80vw, 100vw"
+          placeholder={banner?.blur ? 'blur' : 'empty'}
+          blurDataURL={banner?.blur}
+        />
       </div>
 
       <div className="py-8">

@@ -49,15 +49,15 @@ export default function Home({
   return (
     <Layout>
       <div className='relative h-[50vh]'>
-      <Image
-        className={`object-cover`}
-        alt={banner.altText}
-        src={banner.url + '?w=3440'}
-        fill
-        sizes="(min-width: 768px) 80vw, 100vw"
-        placeholder={banner?.blur ? 'blur' : 'empty'}
-        blurDataURL={banner?.blur}
-      />
+        <Image
+          className={`object-cover`}
+          alt={banner.altText}
+          src={banner.url + '?w=3440'}
+          fill
+          sizes="(min-width: 768px) 80vw, 100vw"
+          placeholder={banner?.blur ? 'blur' : 'empty'}
+          blurDataURL={banner?.blur}
+        />
       </div>
 
       <div className="py-8">
