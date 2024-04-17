@@ -23,13 +23,15 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
       const { url, fileName } = node.data.target.fields.file
       return (
-        <Image
-          src={`https:${url}`}
-          alt={fileName}
-          width={node.data.target.fields.file.details.image.width}
-          height={node.data.target.fields.file.details.image.height}
-          className='my-4 rounded shadow-md'
-        />
+        <a href={`http:${url}`}>
+          <Image
+            src={`https:${url}`}
+            alt={fileName}
+            width={node.data.target.fields.file.details.image.width}
+            height={node.data.target.fields.file.details.image.height}
+            className='my-4 rounded'
+          />
+        </a>
       )
     },
   },

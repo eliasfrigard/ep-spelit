@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
-import Form from '@/components/Form'
+import Dropdown from '@/components/Dropdown'
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
@@ -49,7 +49,7 @@ export default function Loiskeet({
 }) {
   return (
     <Layout pageTitle='Loiskeet'>
-      <div className='relative h-[50vh]'>
+      <div className='relative h-[50vh] w-full'>
         <Image
           className={`object-cover`}
           alt={banner.altText}
@@ -61,12 +61,8 @@ export default function Loiskeet({
         />
       </div>
 
-      <div className="py-8">
+      <div className='flex flex-col w-full justify-center items-center py-8 lg:py-16 gap-8 lg:gap-16'>
         <TextLayout text={textContent} className='text-primary-600' />
-      </div>
-
-      <div className='flex justify-center items-center'>
-        <Form />
       </div>
     </Layout>
   )

@@ -6,7 +6,7 @@ const Form = ({
 
   }) => {
   return (
-  <form className='container max-w-4xl my-8 flex flex-col gap-6 px-6'> 
+  <form className='container max-w-4xl flex flex-col gap-6 px-6'> 
     <div className="">
       <h2 className="text-lg font-semibold leading-7 text-gray-900">Yhteydenottolomake</h2>
       <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>

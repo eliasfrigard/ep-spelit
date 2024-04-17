@@ -4,6 +4,13 @@ import { useRouter } from 'next/router'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
+import {
+  InformationCircleIcon,
+  ClockIcon,
+  MusicalNoteIcon,
+  CalendarDaysIcon,
+} from "@heroicons/react/24/solid"
+
 export default function Layout({
   children,
   pageTitle,
@@ -42,12 +49,38 @@ export default function Layout({
   const pageName = 'Eteläpohjalaiset Spelit'
 
   const routes = [
-    { href: '/', label: 'etusivu' },
-    { href: '/loiskeet', label: 'loiskeet' },
-    { href: '/esiintyjat', label: 'esiintyjät' },
-    { href: '/nuottivihko', label: 'nuottivihko' },
-    { href: '/historia', label: 'historia' },
-    { href: '/hallitus', label: 'hallitus' },
+    { href: '/', label: 'etusivu', type: 'link' },
+    { href: '/loiskeet', label: 'loiskeet', type: 'link' },
+    { href: '/esiintyjat', label: 'esiintyjät', type: 'link' },
+    { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
+    { href: '/historia', label: 'historia', type: 'link' },
+    { href: '/hallitus', label: 'hallitus', type: 'link' },
+    { label: 'loiskeet', type: 'dropdown', items: [
+      {
+        label: "Loiskeet 2024",
+        href: "/loiskeet",
+        description: "Find the perfect solution for your needs.",
+        icon: CalendarDaysIcon,
+      },
+      {
+        label: "Esiintyjät",
+        href: "/esiintyjat",
+        description: "Meet and learn about our dedication",
+        icon: MusicalNoteIcon,
+      },
+      {
+        label: "Ohjelma",
+        href: "/historia",
+        description: "Meet and learn about our dedication",
+        icon: ClockIcon,
+      },
+      {
+        label: "Info",
+        href: "/nuottivihko",
+        description: "Meet and learn about our dedication",
+        icon: InformationCircleIcon,
+      },
+    ]}
   ]
 
   const socialMedia = {

@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import Dropdown from './Dropdown'
 import Hamburger from './Hamburger'
 import AnimateIn from './AnimateIn'
 
@@ -19,7 +20,7 @@ const Header = ({
   font,
   titleHidden = false
 } : {
-  routes: { href: string, label: string }[]
+  routes: any[]
   currentRoute: string
   pageName: string
   socialMedia: {
@@ -121,13 +122,17 @@ const Header = ({
           </div>
           <div id='center' className='flex justify-center items-center tracking-widest'>
             {routes.map((route, index) => (
-              <Link
-                key={route.href}
-                href={route.href}
-                className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium`}
-                >
-                {route.label}
-              </Link>
+              route.type === 'dropdown' ? (
+                <Dropdown key={index} label={route.label} items={route.items} />
+              ) : (
+                <Link
+                  key={index}
+                  href={route.href}
+                  className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium`}
+                  >
+                  {route.label}
+                </Link>
+              )
             ))}
           </div>
           <div id='right' className='flex gap-4 xl:gap-5 justify-end items-center min-w-[200px]'>
@@ -210,14 +215,18 @@ const Header = ({
           }`}
       >
         <div className='container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla'>
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={`${activeLinkStyling(route.href)} mobileNavLink`}
-            >
-              {route.label}
-            </Link>
+          {routes.map((route, index) => (
+            route.type === 'dropdown' ? (
+              <Dropdown key={index} label={route.label} items={route.items} />
+            ) : (
+              <Link
+                key={index}
+                href={route.href}
+                className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium`}
+                >
+                {route.label}
+              </Link>
+            )
           ))}
         </div>
 

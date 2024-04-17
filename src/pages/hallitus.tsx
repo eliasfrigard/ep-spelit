@@ -92,7 +92,7 @@ export default function Home({
           }
         </div>
 
-        <div className='w-2/3 h-[2px] rounded-full opacity-40 my-2 md:my-8 bg-primary-500'></div>
+        <div className='w-2/3 h-[2px] rounded-full opacity-20 my-2 md:my-8 bg-primary-500'></div>
 
         {files.length > 0 && (
           <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>
@@ -104,7 +104,7 @@ export default function Home({
               {files.map((file) => (
                 <DownloadItem
                   key={file.sys.id}
-                  title={file.fields.description}
+                  title={file.fields.title}
                   filename={file.fields.file.fileName}
                   file={`https:${file.fields.file.url}`}
                 />
