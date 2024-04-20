@@ -121,8 +121,7 @@ export default function Layout({
         currentRoute={router.pathname}
         routes={routes} 
         socialMedia={socialMedia}
-        pageName={pageName} 
-        uppercaseLinks={false} 
+        pageName={pageName}
         font='font-khorla'
         titleHidden={titleHidden}
       />

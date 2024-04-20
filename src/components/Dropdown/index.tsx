@@ -74,7 +74,7 @@ const Dropdown = ({
               <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-300 ease-linear ${activeLinkStyling(href)}`}>
                 {/* @ts-ignore */}
                 <ListItem
-                  className={`flex items-center gap-2 py-2 text-lg tracking-wide pr-4 capitalize ease-linear`}
+                  className={`flex items-center gap-2 py-2 text-base tracking-wide pr-4 capitalize ease-linear`}
                   selected={isMenuOpen || isMobileMenuOpen}
                   onClick={() => setIsMobileMenuOpen((cur) => !cur)}
                 >
