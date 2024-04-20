@@ -172,7 +172,7 @@ const Header = ({
 
       {/* MOBILE */}
 
-      <div className={`w-screen flex fixed items-center z-50 bg-primary-950`}>
+      <div className={`w-screen flex fixed items-center z-50 bg-[#283740]`}>
         <div
           className={`
           w-full
@@ -182,7 +182,7 @@ const Header = ({
           items-center
           h-[85px]
           tracking-wide
-          ${mobileNavOpen || scrolled ? 'backdrop-blur bg-primary-700 text-primary-300' : 'text-black'}
+          ${mobileNavOpen || scrolled ? 'backdrop-blur bg-[#283740] text-primary-300' : 'text-black'}
           px-6
           duration-300
           ${font}
@@ -211,7 +211,7 @@ const Header = ({
       </div>
 
       <div
-        className={`xl:hidden  px-8 fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-700 z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
+        className={`xl:hidden  px-8 fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-[#283740] z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
         <div className='container flex flex-col justify-center items-start gap-2 text-primary-100 font-khorla'>
@@ -232,43 +232,45 @@ const Header = ({
           ))}
         </div>
 
-        <div className='flex justify-center items-center gap-6 text-primary-300'>
-          {socialMedia?.phone && (
-            <a href={`tel:${socialMedia.phone}`}>
-              <BsTelephone className='soMeIcon text-xl antialiased' />
+        <div className='flex flex-col gap-5'>
+          <div className='flex justify-center items-center gap-4 text-primary-300'>
+            {socialMedia?.phone && (
+              <a href={`tel:${socialMedia.phone}`}>
+                <BsTelephone className='soMeIcon text-xl antialiased' />
+              </a>
+            )}
+            {socialMedia?.email && (
+              <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
+                <AiOutlineMail className='soMeIcon text-[1.6rem] antialiased' />
+              </a>
+            )}
+            {socialMedia?.facebook && (
+              <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
+                <BsFacebook className='soMeIcon text-2xl' />
+              </a>
+            )}
+            {socialMedia?.instagram && (
+              <a href={socialMedia?.instagram} target='_blank' rel='noopener noreferrer'>
+                <BsInstagram className='soMeIcon text-2xl' />
+              </a>
+            )}
+            {socialMedia?.spotify && (
+              <a href={socialMedia?.spotify} target='_blank' rel='noopener noreferrer'>
+                <BsSpotify className='soMeIcon text-2xl' />
+              </a>
+            )}
+            {socialMedia?.youTube && (
+              <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
+                <BsYoutube className='soMeIcon text-[1.8rem] translate-y-[1px]' />
+              </a>
+            )}
+          </div>
+          <div className={`tracking-wide text-sm opacity-70 text-center text-primary-300 ${font}`}>
+            <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
+            <a href='mailto:' className='text-xs underline'>
+              {socialMedia?.email}
             </a>
-          )}
-          {socialMedia?.email && (
-            <a href={`mailto:${socialMedia?.email}?subject=${pageName} Website`}>
-              <AiOutlineMail className='soMeIcon text-[1.6rem] antialiased' />
-            </a>
-          )}
-          {socialMedia?.facebook && (
-            <a href={socialMedia?.facebook} target='_blank' rel='noopener noreferrer'>
-              <BsFacebook className='soMeIcon text-2xl' />
-            </a>
-          )}
-          {socialMedia?.instagram && (
-            <a href={socialMedia?.instagram} target='_blank' rel='noopener noreferrer'>
-              <BsInstagram className='soMeIcon text-2xl' />
-            </a>
-          )}
-          {socialMedia?.spotify && (
-            <a href={socialMedia?.spotify} target='_blank' rel='noopener noreferrer'>
-              <BsSpotify className='soMeIcon text-2xl' />
-            </a>
-          )}
-          {socialMedia?.youTube && (
-            <a href={socialMedia?.youTube} target='_blank' rel='noopener noreferrer'>
-              <BsYoutube className='soMeIcon text-[1.8rem] translate-y-[1px]' />
-            </a>
-          )}
-        </div>
-        <div className={`tracking-wide text-sm opacity-70 text-center text-primary-300 ${font}`}>
-          <p className='text-s mb-2'>{`Copyright ${currentYear} © ${pageName}`}</p>
-          <a href='mailto:' className='text-xs underline'>
-            {socialMedia?.email}
-          </a>
+          </div>
         </div>
       </div>
     </>
