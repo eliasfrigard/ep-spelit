@@ -17,13 +17,13 @@ const Dropdown = ({
   href,
   label,
   items,
-  isTransparent,
   isScrolled,
+  currentRoute,
 } : {
   href: string,
   label: string,
-  isTransparent: boolean,
-  isScroll: boolean,
+  isScrolled?: boolean,
+  currentRoute: string,
   items: {
     label: string,
     href: string,
@@ -34,6 +34,14 @@ const Dropdown = ({
   const [openNav, setOpenNav] = React.useState(false)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+
+  const activeLinkStyling = (path: string) => {
+    if (currentRoute !== path) return
+
+    const style = 'font-medium text-accent-500'
+
+    if (currentRoute.startsWith(path)) return style
+  }
 
   const renderNavItems = items.map((item, key) => (
       <DropdownItem
@@ -63,7 +71,8 @@ const Dropdown = ({
             allowHover={true}
           >
             <MenuHandler>
-              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-300 ease-linear`}>
+              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-300 ease-linear ${activeLinkStyling(href)}`}>
+                {/* @ts-ignore */}
                 <ListItem
                   className={`flex items-center gap-2 py-2 text-lg tracking-wide pr-4 capitalize ease-linear`}
                   selected={isMenuOpen || isMobileMenuOpen}
@@ -85,6 +94,7 @@ const Dropdown = ({
                 </ListItem>
               </div>
             </MenuHandler>
+            {/* @ts-ignore */}
             <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
               <ul className="grid grid-cols-1 gap-y-2 outline-none outline-0">
                 {renderNavItems}

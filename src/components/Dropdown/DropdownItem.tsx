@@ -21,6 +21,7 @@ const DropdownItem = ({
 }) => {
   return (
     <Link href={baseUrl + href}>
+      {/* @ts-ignore */}
       <MenuItem className="flex items-center gap-3 rounded-lg">
         <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
           {" "}
@@ -30,6 +31,7 @@ const DropdownItem = ({
           })}
         </div>
         <div>
+          {/* @ts-ignore */}
           <Typography
             variant="h6"
             color="blue-gray"
@@ -37,6 +39,7 @@ const DropdownItem = ({
           >
             {title}
           </Typography>
+          {/* @ts-ignore */}
           <Typography
             variant="paragraph"
             className="text-xs !font-medium text-blue-gray-500"

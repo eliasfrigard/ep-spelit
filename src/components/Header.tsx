@@ -16,7 +16,6 @@ const Header = ({
   pageName,
   socialMedia, 
   transparent = false, 
-  uppercaseLinks = true, 
   fadeIn = false,
   font,
   titleHidden = false
@@ -33,7 +32,6 @@ const Header = ({
     youTube?: string
   }
   transparent?: boolean
-  uppercaseLinks?: boolean
   fadeIn?: boolean
   font: string,
   titleHidden?: boolean
@@ -49,7 +47,7 @@ const Header = ({
   const activeLinkStyling = (path: string) => {
     if (currentRoute !== path) return
 
-    const style = 'font-bold text-accent-500'
+    const style = 'font-medium text-accent-500'
 
     if (currentRoute.startsWith(path)) return style
   }
@@ -124,14 +122,15 @@ const Header = ({
           <div id='center' className='flex justify-center items-center tracking-widest gap-1'>
             {routes.map((route, index) => (
               route.type === 'dropdown' ? (
-                <Dropdown href={route.href} isTransparent={transparent} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
+                <Dropdown href={route.href} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
               ) : (
                 <Link
                   key={index}
                   href={route.href}
                   className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
-                    <ListItem className={`ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-500`}>{route.label}</ListItem>
+                    {/* @ts-ignore */}
+                    <ListItem className={`ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300`}>{route.label}</ListItem>
                 </Link>
               )
             ))}
@@ -218,6 +217,7 @@ const Header = ({
         <div className='container flex flex-col justify-center items-start gap-2 text-primary-100 font-khorla'>
           {routes.map((route, index) => (
             route.type === 'dropdown' ? (
+              // @ts-ignore
               <Dropdown key={index} href={route.href} label={route.label} items={route.items} />
             ) : (
               <Link
@@ -225,6 +225,7 @@ const Header = ({
                 href={route.href}
                 className={`${activeLinkStyling(route.href)} hover:text-accent-500 capitalize font-medium w-full`}
               >
+                {/* @ts-ignore */}
                 <ListItem className="flex items-center w-full gap-2 py-2 text-lg tracking-wide pr-4 capitalize text-white">{route.label}</ListItem>
               </Link>
             )
