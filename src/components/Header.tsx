@@ -121,17 +121,17 @@ const Header = ({
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
           </div>
-          <div id='center' className='flex justify-center items-center tracking-widest'>
+          <div id='center' className='flex justify-center items-center tracking-widest gap-1'>
             {routes.map((route, index) => (
               route.type === 'dropdown' ? (
-                <Dropdown currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
+                <Dropdown isTransparent={transparent} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
               ) : (
                 <Link
                   key={index}
                   href={route.href}
-                  className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500`}
+                  className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
-                    <ListItem className="flex items-center gap-2 py-2 text-base pr-4 capitalize">{route.label}</ListItem>
+                    <ListItem className="ease-linear flex items-center text-base capitalize">{route.label}</ListItem>
                 </Link>
               )
             ))}
@@ -223,7 +223,7 @@ const Header = ({
               <Link
                 key={index}
                 href={route.href}
-                className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium w-full`}
+                className={`${activeLinkStyling(route.href)} hover:text-accent-500 capitalize font-medium w-full`}
               >
                 <ListItem className="flex items-center w-full gap-2 py-2 text-lg tracking-wide pr-4 capitalize text-white">{route.label}</ListItem>
               </Link>

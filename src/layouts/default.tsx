@@ -52,7 +52,7 @@ export default function Layout({
     { href: '/', label: 'etusivu', type: 'link' },
     { href: '/loiskeet', label: 'loiskeet', type: 'dropdown', items: [
       {
-        label: "Loiskeet 2024",
+        label: "Lokakuun Loiskeet 2024",
         href: "/loiskeet",
         description: "Find the perfect solution for your needs.",
         icon: CalendarDaysIcon,
@@ -76,7 +76,32 @@ export default function Layout({
         icon: InformationCircleIcon,
       },
     ]},
-    { href: '/esiintyjat', label: 'esiintyjät', type: 'link' },
+    { href: '/spelit', label: 'spelit', type: 'dropdown', items: [
+      {
+        label: "Spelit 2024",
+        href: "/spelit",
+        description: "Find the perfect solution for your needs.",
+        icon: CalendarDaysIcon,
+      },
+      {
+        label: "Esiintyjät",
+        href: "/esiintyjat",
+        description: "Meet and learn about our dedication",
+        icon: MusicalNoteIcon,
+      },
+      {
+        label: "Ohjelma",
+        href: "/historia",
+        description: "Meet and learn about our dedication",
+        icon: ClockIcon,
+      },
+      {
+        label: "Info",
+        href: "/nuottivihko",
+        description: "Meet and learn about our dedication",
+        icon: InformationCircleIcon,
+      },
+    ]},
     { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
     { href: '/historia', label: 'historia', type: 'link' },
     { href: '/hallitus', label: 'hallitus', type: 'link' },

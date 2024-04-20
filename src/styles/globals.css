@@ -86,19 +86,7 @@ a {
     transition: all 0.3s ease;
     border-radius: theme('borderRadius.full');
   }
-
-  .desktopNavLink {
-    --tw-border-opacity: 0;
-    padding-bottom: 5px;
-    padding: 6px 10px 6px 10px;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    transition-duration: 200ms;
-  }
-  .desktopNavLink:hover {
-    /* color: theme('colors.accent.500'); */
-  }
-
+  
   .soMeIcon {
     transition-duration: 150ms;
   }
