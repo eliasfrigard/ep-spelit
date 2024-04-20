@@ -22,8 +22,8 @@ const DropdownItem = ({
   return (
     <Link href={baseUrl + href}>
       {/* @ts-ignore */}
-      <MenuItem className="flex items-center gap-3 rounded-lg">
-        <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
+      <MenuItem className="flex items-center gap-3 rounded-lg hover:bg-[#D2D6D9]">
+        <div className="flex items-center justify-center rounded-lg !bg-[#D2D6D9] p-2 ">
           {" "}
           {React.createElement(icon, {
             strokeWidth: 2,

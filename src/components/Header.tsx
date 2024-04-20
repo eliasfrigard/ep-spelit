@@ -85,8 +85,8 @@ const Header = ({
           top-0 
           items-center 
           z-50 
-          ${!transparent || scrolled ? 'backdrop-blur bg-primary-700' : ''}
-          bg-opacity-80 
+          ${!transparent || scrolled ? 'backdrop-blur bg-[#283740]' : ''}
+          bg-opacity-90
           duration-500
           ${transparent ? '' : 'shadow-lg'}
         `}
@@ -130,7 +130,7 @@ const Header = ({
                   className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
                     {/* @ts-ignore */}
-                    <ListItem className={`ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300`}>{route.label}</ListItem>
+                    <ListItem className={`ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
                 </Link>
               )
             ))}

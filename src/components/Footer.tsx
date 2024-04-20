@@ -26,7 +26,7 @@ const Footer = ({
   }, [])
 
   return (
-    <div className='absolute w-full bg-primary-600 flex justify-center items-center'>
+    <div className='absolute w-full bg-[#283740] flex justify-center items-center'>
       <div className='container flex flex-col justify-between items-center py-10 lg:py-12 px-8 text-white'>
         <div className='container flex flex-wrap flex-col md:flex-row justify-between gap-y-8 lg:px-0'>
           <div className='flex flex-col gap-2 text-sm opacity-60'>
@@ -41,7 +41,7 @@ const Footer = ({
             <p className='text-xs'>Edesjärventie</p>
             <p className='text-xs'>63300 Alavus</p>
             <p className='font-medium text-xs'>040 725 2609</p>
-            <a className='font-medium text-xs text-accent-500' href="mailto:elli.asunmaa@gmail.com">elli.asunmaa@gmail.com</a>
+            <a className='font-medium text-xs text-red-500' href="mailto:elli.asunmaa@gmail.com">elli.asunmaa@gmail.com</a>
           </div>
           <div className='flex flex-col gap-2 text-sm opacity-60'>
             <p className='font-bold'>Puheenjohtaja Timo Saarimäki</p>

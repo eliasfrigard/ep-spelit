@@ -127,7 +127,7 @@ export default function Layout({
       />
       <main
         style={{ transition: 'opacity-90 200ms ease-out' }}
-        className={`minContainerHeight bg-primary-100 pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'} ${className}`}
+        className={`minContainerHeight bg-white pt-[85px] fade-in ${loading ? 'opacity-0' : 'opacity-100'} ${className}`}
       >
         {children}
       </main>

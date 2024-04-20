@@ -2,6 +2,7 @@ import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
 import Banner from "@/components/Banner"
 import Form from '@/components/Form'
+import Divider from "@/components/Divider"
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
@@ -66,7 +67,7 @@ export default function Historia({
 
       <div className='flex flex-col w-full justify-center items-center py-8 lg:pb-16 gap-8 lg:gap-16'>
         <TextLayout text={textContent} className='text-primary-600' />
-        <div className='w-2/3 h-[2px] rounded-full opacity-20 bg-primary-500'></div>
+        <Divider className='w-2/3' />
         <Form />
       </div>
     </Layout>
