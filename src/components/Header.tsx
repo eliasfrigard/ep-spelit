@@ -8,6 +8,7 @@ import AnimateIn from './AnimateIn'
 
 import { BsFacebook, BsInstagram, BsYoutube, BsSpotify, BsTelephone } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
+import { ListItem } from '@material-tailwind/react'
 
 const Header = ({
   routes = [],
@@ -123,14 +124,14 @@ const Header = ({
           <div id='center' className='flex justify-center items-center tracking-widest'>
             {routes.map((route, index) => (
               route.type === 'dropdown' ? (
-                <Dropdown key={index} label={route.label} items={route.items} />
+                <Dropdown currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
               ) : (
                 <Link
                   key={index}
                   href={route.href}
-                  className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium`}
+                  className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500`}
                   >
-                  {route.label}
+                    <ListItem className="flex items-center gap-2 py-2 text-base pr-4 capitalize">{route.label}</ListItem>
                 </Link>
               )
             ))}
@@ -214,7 +215,7 @@ const Header = ({
         className={`xl:hidden  px-8 fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-primary-700 z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
-        <div className='container flex flex-col justify-center items-center gap-6 text-primary-100 font-khorla'>
+        <div className='container flex flex-col justify-center items-start gap-2 text-primary-100 font-khorla'>
           {routes.map((route, index) => (
             route.type === 'dropdown' ? (
               <Dropdown key={index} label={route.label} items={route.items} />
@@ -222,9 +223,9 @@ const Header = ({
               <Link
                 key={index}
                 href={route.href}
-                className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium`}
-                >
-                {route.label}
+                className={`${activeLinkStyling(route.href)} desktopNavLink hover:text-accent-500 capitalize font-medium w-full`}
+              >
+                <ListItem className="flex items-center w-full gap-2 py-2 text-lg tracking-wide pr-4 capitalize text-white">{route.label}</ListItem>
               </Link>
             )
           ))}

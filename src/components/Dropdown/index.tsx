@@ -50,9 +50,9 @@ function NavListMenu({
         allowHover={true}
       >
         <MenuHandler>
-          <Typography as="div" variant="small" className="font-medium">
+          <div className="text-white lg:text-black desktopNavLink">
             <ListItem
-              className="flex items-center gap-2 py-2 text-base font-medium pr-4 desktopNavLink"
+              className={`flex items-center gap-2 py-2 text-lg tracking-wide pr-4 capitalize`}
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -70,7 +70,7 @@ function NavListMenu({
                 }`}
               />
             </ListItem>
-          </Typography>
+          </div>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
           <ul className="grid grid-cols-1 gap-y-2 outline-none outline-0">
@@ -78,6 +78,9 @@ function NavListMenu({
           </ul>
         </MenuList>
       </Menu>
+      <div className="block lg:hidden bg-blue-gray-50 rounded-lg">
+        <Collapse open={isMobileMenuOpen}>{renderNavItems}</Collapse>
+      </div>
     </React.Fragment>
   );
 }
@@ -106,10 +109,10 @@ const Dropdown = ({
         <div className="hidden lg:block">
           <NavListMenu label={label} items={items} />
         </div>
+        <div className="block lg:hidden">
+          <NavListMenu label={label} items={items} />
+        </div>
       </div>
-      <Collapse open={openNav}>
-        <NavListMenu label={label} items={items} />
-      </Collapse>
     </>
   )
 }

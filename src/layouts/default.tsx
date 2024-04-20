@@ -50,12 +50,7 @@ export default function Layout({
 
   const routes = [
     { href: '/', label: 'etusivu', type: 'link' },
-    { href: '/loiskeet', label: 'loiskeet', type: 'link' },
-    { href: '/esiintyjat', label: 'esiintyjät', type: 'link' },
-    { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
-    { href: '/historia', label: 'historia', type: 'link' },
-    { href: '/hallitus', label: 'hallitus', type: 'link' },
-    { label: 'loiskeet', type: 'dropdown', items: [
+    { href: '/loiskeet', label: 'loiskeet', type: 'dropdown', items: [
       {
         label: "Loiskeet 2024",
         href: "/loiskeet",
@@ -80,7 +75,11 @@ export default function Layout({
         description: "Meet and learn about our dedication",
         icon: InformationCircleIcon,
       },
-    ]}
+    ]},
+    { href: '/esiintyjat', label: 'esiintyjät', type: 'link' },
+    { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
+    { href: '/historia', label: 'historia', type: 'link' },
+    { href: '/hallitus', label: 'hallitus', type: 'link' },
   ]
 
   const socialMedia = {
