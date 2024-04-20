@@ -2,6 +2,7 @@ import Layout from "@/layouts/default"
 import Card from '@/components/Card'
 import Banner from "@/components/Banner"
 import DownloadItem from '@/components/DownloadItem'
+import Divider from "@/components/Divider"
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
@@ -94,7 +95,7 @@ export default function Home({
           }
         </div>
 
-        <div className='w-2/3 h-[2px] rounded-full opacity-20 my-2 md:my-8 bg-primary-500'></div>
+        <Divider className="w-2/3 my-2 md:my-8"/>
 
         {files.length > 0 && (
           <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>

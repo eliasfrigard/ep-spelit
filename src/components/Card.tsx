@@ -38,7 +38,7 @@ const Card = ({
             />
           </div>
         ) : (
-          <div className= 'shadow-md bg-accent-500 text-white h-20 w-20 rounded-full flex justify-center items-center'>
+          <div className= 'shadow-xs bg-[#283740] text-white h-20 w-20 rounded-full flex justify-center items-center'>
             <p className='text-2xl font-bold tracking-wide'>{getInitials(name)}</p>
           </div>
         )
