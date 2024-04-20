@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Layout from "@/layouts/default"
 import Card from '@/components/Card'
+import Banner from "@/components/Banner"
 import DownloadItem from '@/components/DownloadItem'
 
 import { createClient } from 'contentful'
@@ -19,8 +19,19 @@ export async function getStaticProps() {
   })
 
   const page = pageRes.items[0].fields
-
   const banner: any = page?.banner
+  
+  if (!banner) {
+    return {
+      props: {
+        banner: null,
+        textContent: page.textContent,
+        members: page.boardMembers,
+        files: page.files,
+      },
+    }
+  }
+
   const bannerUrl = 'https:' + banner?.fields.file.url
   const bannerBuffer = await getImageBuffer(bannerUrl)
   const { base64: bannerBlur } = await getPlaiceholder(bannerBuffer)
@@ -52,21 +63,17 @@ export default function Home({
 }) {
   return (
     <Layout transparent={true} pageTitle='Hallitus'>
-      <div className='relative h-[50vh]'>
-        <Image
-          className={`object-cover`}
-          alt={banner.altText}
-          src={banner.url + '?w=3440'}
-          fill
-          sizes="(min-width: 768px) 80vw, 100vw"
-          placeholder={banner?.blur ? 'blur' : 'empty'}
-          blurDataURL={banner?.blur}
+      {banner && (
+        <Banner 
+          url={banner.url} 
+          altText={banner.altText} 
+          blur={banner?.blur}
         />
-      </div>
+      )}
 
-      <div className='w-full flex flex-col justify-center items-center pb-4 pt-4 md:py-16 gap-8 px-6'>
+      <div className='w-full flex flex-col justify-center items-center pb-4 pt-4 lg:py-16 gap-8 px-6'>
         {/* <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' /> */}
-        <div className="container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 flex-wrap">
+        <div className="container w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 flex-wrap">
           {
             members.map((member: any) => {
               const photograph = member.fields.photo ? {

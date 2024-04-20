@@ -1,7 +1,6 @@
-import Image from 'next/image'
+import Banner from "@/components/Banner"
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
-import Dropdown from '@/components/Dropdown'
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../../types'
@@ -21,8 +20,16 @@ export async function getStaticProps() {
   })
 
   const page = pageRes.items[0].fields
-
   const banner: any = page?.banner
+
+  if (!banner) {
+    return {
+      props: {
+        banner: null,
+        textContent: page.text,
+      },
+    }
+  }
 
   const bannerUrl = 'https:' + banner?.fields.file.url
   const bannerBuffer = await getImageBuffer(bannerUrl)
@@ -50,21 +57,19 @@ export default function Loiskeet({
   textContent: any 
 }) {
   return (
-    <Layout pageTitle='Loiskeet'>
-      <div className='relative h-[50vh] w-full'>
-        <Image
-          className={`object-cover`}
-          alt={banner.altText}
-          src={banner.url + '?w=3440'}
-          fill
-          sizes="(min-width: 768px) 80vw, 100vw"
-          placeholder={banner?.blur ? 'blur' : 'empty'}
-          blurDataURL={banner?.blur}
+    <Layout pageTitle='Esiintyjät'>
+      {banner && (
+        <Banner 
+          url={banner.url} 
+          altText={banner.altText} 
+          blur={banner?.blur}
         />
-      </div>
+      )}
 
-      <div className='flex flex-col w-full justify-center items-center py-8 lg:py-16 gap-8 lg:gap-16'>
-        <TextLayout text={textContent} className='text-primary-600' />
+      <div className='py-8 lg:pb-16 flex flex-col gap-8 lg:gap-16'>
+        {textContent && (
+          <TextLayout text={textContent} className='text-primary-600' />
+        )}
       </div>
     </Layout>
   )

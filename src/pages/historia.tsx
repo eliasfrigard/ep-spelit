@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
+import Banner from "@/components/Banner"
 import Form from '@/components/Form'
 
 import { createClient } from 'contentful'
@@ -19,8 +19,16 @@ export async function getStaticProps() {
   })
 
   const page = pageRes.items[0].fields
-
   const banner: any = page?.banner
+
+  if (!banner) {
+    return {
+      props: {
+        banner: null,
+        textContent: page.textContent,
+      },
+    }
+  }
 
   const bannerUrl = 'https:' + banner?.fields.file.url
   const bannerBuffer = await getImageBuffer(bannerUrl)
@@ -48,19 +56,15 @@ export default function Historia({
 }) {
   return (
     <Layout pageTitle='Historia'>
-      <div className='relative h-[50vh] w-full'>
-        <Image
-          className={`object-cover`}
-          alt={banner.altText}
-          src={banner.url + '?w=3440'}
-          fill
-          sizes="(min-width: 768px) 80vw, 100vw"
-          placeholder={banner?.blur ? 'blur' : 'empty'}
-          blurDataURL={banner?.blur}
+      {banner && (
+        <Banner 
+          url={banner.url} 
+          altText={banner.altText} 
+          blur={banner?.blur}
         />
-      </div>
+      )}
 
-      <div className='flex flex-col w-full justify-center items-center py-8 lg:py-16 gap-8 lg:gap-16'>
+      <div className='flex flex-col w-full justify-center items-center py-8 lg:pb-16 gap-8 lg:gap-16'>
         <TextLayout text={textContent} className='text-primary-600' />
         <div className='w-2/3 h-[2px] rounded-full opacity-20 bg-primary-500'></div>
         <Form />

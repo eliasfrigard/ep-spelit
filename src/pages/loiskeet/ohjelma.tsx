@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Layout from "@/layouts/default"
+import Banner from "@/components/Banner"
 import TextLayout from "@/components/TextLayout"
 
 import { createClient } from 'contentful'
@@ -20,8 +20,16 @@ export async function getStaticProps() {
   })
 
   const page = pageRes.items[0].fields
-
   const banner: any = page?.programBanner
+  
+  if (!banner) {
+    return {
+      props: {
+        banner: null,
+        textContent: page.programText,
+      },
+    }
+  }
 
   const bannerUrl = 'https:' + banner?.fields.file.url
   const bannerBuffer = await getImageBuffer(bannerUrl)
@@ -45,28 +53,23 @@ export default function Home({
   banner,
   textContent,
 } : {
-  banner: ContentfulImage,
+  banner?: ContentfulImage,
   textContent: any
 }) {
   return (
     <Layout pageTitle='Esiintyjät'>
-        <div className='relative h-[50vh]'>
-          <Image
-            className={`object-cover`}
-            alt={banner.altText}
-            src={banner.url + '?w=3440'}
-            fill
-            sizes="(min-width: 768px) 80vw, 100vw"
-            placeholder={banner?.blur ? 'blur' : 'empty'}
-            blurDataURL={banner?.blur}
-            />
-        </div>
-        <div className='py-8 lg:py-16 flex flex-col gap-8 lg:gap-16'>
-        {
-          textContent && (
-            <TextLayout text={textContent} className='text-primary-600' />
-          )
-        }
+      {banner && (
+        <Banner 
+          url={banner.url} 
+          altText={banner.altText} 
+          blur={banner?.blur}
+        />
+      )}
+
+      <div className='py-8 lg:pb-16 flex flex-col gap-8 lg:gap-16'>
+        {textContent && (
+          <TextLayout text={textContent} className='text-primary-600' />
+        )}
       </div>
     </Layout>
   )
