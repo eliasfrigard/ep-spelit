@@ -66,7 +66,7 @@ export default function Nuottivihko({
         />
       )}
 
-      <div className='flex flex-col w-full justify-center items-center py-8 lg:pb-16 gap-8 lg:gap-16'>
+      <div className='flex flex-col w-full justify-center items-center py-8 lg: gap-8 lg:gap-16'>
         <TextLayout text={textContent} className='text-primary-600' />
         <Divider className='w-2/3' />
         <Form />

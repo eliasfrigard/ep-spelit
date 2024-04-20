@@ -16,8 +16,8 @@ a {
 }
 
 ::selection {
-  color: theme('colors.primary.300');
-  background: theme('colors.accent.500');
+  color: theme('colors.white');
+  background: #283740;
 }
 
 @tailwind base;

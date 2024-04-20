@@ -64,7 +64,7 @@ export default function Home({
         />
       )}
 
-      <div className="py-8 lg:pb-16">
+      <div className="py-8 lg:">
         <TextLayout text={textContent} className='text-primary-600' />
       </div>
     </Layout>
