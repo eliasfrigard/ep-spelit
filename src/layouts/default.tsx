@@ -132,7 +132,7 @@ export default function Layout({
         {children}
       </main>
 
-      {footer && <Footer author={author} pageName={pageName} />}
+      {footer && <Footer socialMedia={socialMedia} author={author} pageName={pageName} />}
     </>
   )
 }

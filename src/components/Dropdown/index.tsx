@@ -71,7 +71,7 @@ const Dropdown = ({
             allowHover={true}
           >
             <MenuHandler>
-              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-300 ease-linear ${activeLinkStyling(href)}`}>
+              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
                 {/* @ts-ignore */}
                 <ListItem
                   className={`flex items-center gap-2 py-2 text-base tracking-wide pr-4 capitalize ease-linear`}

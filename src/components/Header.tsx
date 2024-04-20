@@ -114,7 +114,7 @@ const Header = ({
               width={50}
               height={50}
             />
-            <Link className='flex flex-col gap-1 cursor-pointer text-sm font-bold tracking-widest uppercase text-start' href='/'>
+            <Link className='flex flex-col cursor-pointer text-sm font-bold tracking-widest uppercase text-start' href='/'>
               <p className='duration-200'>{pageName}</p>
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
@@ -197,7 +197,7 @@ const Header = ({
                   width={40}
                   height={40}
                 />
-                <div>
+                <div className='flex flex-col gap-1'>
                   <p>{pageName}</p>
                   <p className=' font-normal text-[9px] md:text-[13px]'>Kansanmusiikkiyhdistys ry.</p>
                 </div>
