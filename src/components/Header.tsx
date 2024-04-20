@@ -226,7 +226,7 @@ const Header = ({
                 className={`${activeLinkStyling(route.href)} hover:text-accent-500 capitalize font-medium w-full`}
               >
                 {/* @ts-ignore */}
-                <ListItem className="flex items-center w-full gap-2 py-2 text-lg tracking-wide pr-4 capitalize text-white">{route.label}</ListItem>
+                <ListItem className="flex items-center w-full gap-2 py-2 text-base tracking-wide pr-4 capitalize text-white">{route.label}</ListItem>
               </Link>
             )
           ))}
