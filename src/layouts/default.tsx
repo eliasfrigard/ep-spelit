@@ -53,7 +53,7 @@ export default function Layout({
     { href: '/loiskeet', label: 'loiskeet', type: 'dropdown', items: [
       {
         label: "Lokakuun Loiskeet 2024",
-        href: "/loiskeet",
+        href: "/",
         description: "Find the perfect solution for your needs.",
         icon: CalendarDaysIcon,
       },
@@ -65,13 +65,13 @@ export default function Layout({
       },
       {
         label: "Ohjelma",
-        href: "/historia",
+        href: "/ohjelma",
         description: "Meet and learn about our dedication",
         icon: ClockIcon,
       },
       {
         label: "Info",
-        href: "/nuottivihko",
+        href: "/info",
         description: "Meet and learn about our dedication",
         icon: InformationCircleIcon,
       },
@@ -79,7 +79,7 @@ export default function Layout({
     { href: '/spelit', label: 'spelit', type: 'dropdown', items: [
       {
         label: "Spelit 2024",
-        href: "/spelit",
+        href: "/",
         description: "Find the perfect solution for your needs.",
         icon: CalendarDaysIcon,
       },
@@ -91,13 +91,13 @@ export default function Layout({
       },
       {
         label: "Ohjelma",
-        href: "/historia",
+        href: "/ohjelma",
         description: "Meet and learn about our dedication",
         icon: ClockIcon,
       },
       {
         label: "Info",
-        href: "/nuottivihko",
+        href: "/info",
         description: "Meet and learn about our dedication",
         icon: InformationCircleIcon,
       },

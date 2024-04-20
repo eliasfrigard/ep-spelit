@@ -4,7 +4,7 @@ import TextLayout from "@/components/TextLayout"
 import Dropdown from '@/components/Dropdown'
 
 import { createClient } from 'contentful'
-import { ContentfulImage } from '../types'
+import { ContentfulImage } from '../../types'
 import { getImageBuffer } from 'eliasfrigard-reusable-components'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -15,8 +15,9 @@ export async function getStaticProps() {
   })
 
   const pageRes = await contentful.getEntries({
-    content_type: 'contentPage',
-    'fields.title': 'Loiskeet'
+    content_type: 'event',
+    'fields.eventType': 'spelit',
+    select: ['fields.banner', 'fields.text'],
   })
 
   const page = pageRes.items[0].fields
@@ -36,10 +37,11 @@ export async function getStaticProps() {
   return {
     props: {
       banner: bannerImage,
-      textContent: page.textContent,
+      textContent: page.text,
     },
   }
 }
+
 export default function Loiskeet({
   banner,
   textContent,

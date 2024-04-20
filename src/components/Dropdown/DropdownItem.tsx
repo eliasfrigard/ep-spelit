@@ -11,14 +11,16 @@ const DropdownItem = ({
   description,
   href,
   icon,
+  baseUrl,
 } : {
+  baseUrl: string,
   title: string,
   description: string,
   href: string,
   icon: any,
 }) => {
   return (
-    <Link href={href}>
+    <Link href={baseUrl + href}>
       <MenuItem className="flex items-center gap-3 rounded-lg">
         <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
           {" "}

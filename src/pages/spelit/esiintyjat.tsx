@@ -4,7 +4,7 @@ import TextLayout from "@/components/TextLayout"
 import Artist from '@/components/Artist'
 
 import { createClient } from 'contentful'
-import { ContentfulImage } from '../types'
+import { ContentfulImage } from '../../types'
 import { getImageBuffer } from 'eliasfrigard-reusable-components'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -15,12 +15,14 @@ export async function getStaticProps() {
   })
 
   const pageRes = await contentful.getEntries({
-    content_type: 'artistsPage',
+    content_type: 'event',
+    'fields.eventType': 'spelit',
+    select: ['fields.artists', 'fields.artistBanner', 'fields.artistText'],
   })
 
   const page = pageRes.items[0].fields
 
-  const banner: any = page?.banner
+  const banner: any = page?.artistBanner
 
   const bannerUrl = 'https:' + banner?.fields.file.url
   const bannerBuffer = await getImageBuffer(bannerUrl)
@@ -35,7 +37,7 @@ export async function getStaticProps() {
   return {
     props: {
       banner: bannerImage,
-      textContent: page.textContent,
+      textContent: page.artistText,
       artists: page.artists,
     },
   }

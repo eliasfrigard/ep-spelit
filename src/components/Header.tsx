@@ -124,14 +124,14 @@ const Header = ({
           <div id='center' className='flex justify-center items-center tracking-widest gap-1'>
             {routes.map((route, index) => (
               route.type === 'dropdown' ? (
-                <Dropdown isTransparent={transparent} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
+                <Dropdown href={route.href} isTransparent={transparent} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
               ) : (
                 <Link
                   key={index}
                   href={route.href}
                   className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
-                    <ListItem className="ease-linear flex items-center text-base capitalize">{route.label}</ListItem>
+                    <ListItem className={`ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-500`}>{route.label}</ListItem>
                 </Link>
               )
             ))}
@@ -218,7 +218,7 @@ const Header = ({
         <div className='container flex flex-col justify-center items-start gap-2 text-primary-100 font-khorla'>
           {routes.map((route, index) => (
             route.type === 'dropdown' ? (
-              <Dropdown key={index} label={route.label} items={route.items} />
+              <Dropdown key={index} href={route.href} label={route.label} items={route.items} />
             ) : (
               <Link
                 key={index}

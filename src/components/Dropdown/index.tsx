@@ -14,11 +14,13 @@ import {
 } from "@heroicons/react/24/outline"
 
 const Dropdown = ({
+  href,
   label,
   items,
   isTransparent,
   isScrolled,
 } : {
+  href: string,
   label: string,
   isTransparent: boolean,
   isScroll: boolean,
@@ -35,6 +37,7 @@ const Dropdown = ({
 
   const renderNavItems = items.map((item, key) => (
       <DropdownItem
+        baseUrl={href}
         key={key}
         title={item.label}
         description={item.description}
@@ -60,7 +63,7 @@ const Dropdown = ({
             allowHover={true}
           >
             <MenuHandler>
-              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-500 ease-linear`}>
+              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-300 ease-linear`}>
                 <ListItem
                   className={`flex items-center gap-2 py-2 text-lg tracking-wide pr-4 capitalize ease-linear`}
                   selected={isMenuOpen || isMobileMenuOpen}
