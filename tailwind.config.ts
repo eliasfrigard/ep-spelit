@@ -1,6 +1,16 @@
 import type { Config } from "tailwindcss"
 import withMT from '@material-tailwind/react/utils/withMT'
 
+/**
+ * Color palette:
+ * #F2F2F2
+ * #8F9FA6
+ * #D2D6D9
+ * #556773
+ * #283740
+ * + red and black
+ */
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
