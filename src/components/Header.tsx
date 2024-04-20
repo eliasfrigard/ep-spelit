@@ -182,7 +182,7 @@ const Header = ({
           items-center
           h-[85px]
           tracking-wide
-          ${mobileNavOpen || scrolled ? 'backdrop-blur bg-[#283740] text-primary-300' : 'text-black'}
+          ${mobileNavOpen || scrolled ? 'backdrop-blur bg-[#283740] text-primary-300' : 'text-white'}
           px-6
           duration-300
           ${font}
