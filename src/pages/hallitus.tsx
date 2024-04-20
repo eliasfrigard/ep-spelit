@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Layout from "@/layouts/default"
-import TextLayout from "@/components/TextLayout"
 import Card from '@/components/Card'
 import DownloadItem from '@/components/DownloadItem'
-import Title from '@/components/Title'
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
@@ -23,7 +21,6 @@ export async function getStaticProps() {
   const page = pageRes.items[0].fields
 
   const banner: any = page?.banner
-
   const bannerUrl = 'https:' + banner?.fields.file.url
   const bannerBuffer = await getImageBuffer(bannerUrl)
   const { base64: bannerBlur } = await getPlaiceholder(bannerBuffer)
@@ -46,12 +43,10 @@ export async function getStaticProps() {
 
 export default function Home({
   banner,
-  textContent,
   members,
   files
 } : {
   banner: ContentfulImage,
-  textContent: any
   members: any[]
   files: any[] 
 }) {
