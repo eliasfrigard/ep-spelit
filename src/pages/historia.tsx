@@ -1,7 +1,7 @@
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
 import Banner from "@/components/Banner"
-import Form from '@/components/Form'
+import Form from '@/components/Forms/OrderForm'
 import Divider from "@/components/Divider"
 
 import { createClient } from 'contentful'
@@ -68,7 +68,7 @@ export default function Historia({
       <div className='flex flex-col w-full justify-center items-center py-8 lg: gap-8 lg:gap-16'>
         <TextLayout text={textContent} className='text-primary-600' />
         <Divider className='w-2/3' />
-        <Form />
+        <Form subtitle="Tällä lomakkeella voit tilata Spelien 50-vuotishistoriikin hintaan 25€+toimituskulut" />
       </div>
     </Layout>
   )
