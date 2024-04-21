@@ -101,7 +101,7 @@ const Dropdown = ({
               </ul>
             </MenuList>
           </Menu>
-          <div className={`block lg:hidden bg-blue-gray-50 rounded-lg ${isMobileMenuOpen && 'px-1 py-2 mt-2'}`}>
+          <div className={`block lg:hidden bg-[#F2F2F2] rounded-lg ${isMobileMenuOpen && 'px-1 py-2 mt-2'}`}>
             <Collapse open={isMobileMenuOpen}>{renderNavItems}</Collapse>
           </div>
         </React.Fragment>
