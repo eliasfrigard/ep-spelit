@@ -60,8 +60,8 @@ const Dropdown = ({
   }, [])
 
   return (
-    <div className="flex items-center justify-between text-blue-gray-900">
-      <div>
+    <div className="w-full flex items-center justify-between text-blue-gray-900">
+      <div className="w-full">
         <React.Fragment>
           <Menu
             open={isMenuOpen}
@@ -71,7 +71,7 @@ const Dropdown = ({
             allowHover={true}
           >
             <MenuHandler>
-              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
+              <div className={`w-full text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
                 {/* @ts-ignore */}
                 <ListItem
                   className={`flex items-center gap-2 py-2 text-base tracking-wide pr-4 capitalize ease-linear`}
@@ -101,7 +101,7 @@ const Dropdown = ({
               </ul>
             </MenuList>
           </Menu>
-          <div className={`block lg:hidden bg-blue-gray-50 rounded-lg ${isMobileMenuOpen && 'mt-2'}`}>
+          <div className={`block lg:hidden bg-blue-gray-50 rounded-lg ${isMobileMenuOpen && 'px-1 py-2 mt-2'}`}>
             <Collapse open={isMobileMenuOpen}>{renderNavItems}</Collapse>
           </div>
         </React.Fragment>
