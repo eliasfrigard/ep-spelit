@@ -36,11 +36,11 @@ const Dropdown = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   const activeLinkStyling = (path: string) => {
-    if (currentRoute !== path) return
+    if (path === '/') return
 
     const style = 'font-medium text-accent-500'
 
-    if (currentRoute.startsWith(path)) return style
+    if (currentRoute?.startsWith(path)) return style
   }
 
   const renderNavItems = items.map((item, key) => (
