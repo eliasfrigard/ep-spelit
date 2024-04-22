@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BsFacebook, BsInstagram, BsYoutube, BsSpotify, BsTelephone } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
+import AnimateIn from './AnimateIn'
 
 const Footer = ({ 
   pageName, 
@@ -27,7 +28,7 @@ const Footer = ({
 
   return (
     <div className='absolute w-full bg-[#283740] flex justify-center items-center'>
-      <div className='container flex flex-col justify-between items-center py-10 lg:py-12 px-8 text-white'>
+      <AnimateIn className='container flex flex-col justify-between items-center py-10 lg:py-12 px-8 text-white'>
         <div className='container flex flex-wrap flex-col md:flex-row justify-between gap-y-8 lg:px-0'>
           <div className='flex flex-col gap-2 text-sm opacity-60'>
             <p className='font-bold'>Eteläpohjalaiset Spelit</p>
@@ -95,7 +96,7 @@ const Footer = ({
             )}
           </div>
         </div>
-      </div>
+      </AnimateIn>
     </div>
   )
 }
