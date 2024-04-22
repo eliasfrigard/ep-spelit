@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import AnimateIn from './AnimateIn'
 
 const Banner = ({ 
     url,
@@ -11,7 +12,7 @@ const Banner = ({
     blur?: string,
   }) => {
   return (
-    <div className='relative h-[50vh] w-full'>
+    <AnimateIn className='relative h-[50vh] w-full'>
       <Image
         className={`object-cover`}
         alt={altText}
@@ -21,7 +22,7 @@ const Banner = ({
         placeholder={blur ? 'blur' : 'empty'}
         blurDataURL={blur}
       />
-    </div>
+    </AnimateIn>
   )
 }
 

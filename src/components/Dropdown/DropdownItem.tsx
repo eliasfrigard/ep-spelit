@@ -22,12 +22,12 @@ const DropdownItem = ({
   return (
     <Link href={baseUrl + href}>
       {/* @ts-ignore */}
-      <MenuItem className="flex items-center gap-3 rounded-lg hover:bg-[#D2D6D9]">
-        <div className="flex items-center justify-center rounded-lg !bg-[#D2D6D9] p-2 ">
+      <MenuItem className="flex items-center gap-3 rounded-lg hover:bg-[#D2D6D9] dropdownItem">
+        <div className="flex items-center justify-center rounded-lg bg-[#D2D6D9] p-2 dropDownIconDiv">
           {" "}
           {React.createElement(icon, {
             strokeWidth: 2,
-            className: "h-6 text-gray-900 w-6",
+            className: "h-6 text-[#283740] w-6 dropdownIcon",
           })}
         </div>
         <div>
@@ -35,7 +35,7 @@ const DropdownItem = ({
           <Typography
             variant="h6"
             color="blue-gray"
-            className="flex items-center text-sm font-bold"
+            className="flex items-center text-sm font-bold dropdownLabel"
           >
             {title}
           </Typography>

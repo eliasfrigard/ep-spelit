@@ -143,5 +143,19 @@ a {
   .hover-effect-container:hover .secondLine {
     width: 40%;
   }
+
+  .dropdownItem:hover {
+    transition-duration: 100ms;
+  }
+
+  .dropdownItem:hover .dropDownIconDiv {
+    background-color: #283740;
+    transition-duration: 100ms;
+  }
+
+  .dropdownItem:hover .dropdownIcon {
+    color: theme('colors.white');
+    transition-duration: 100ms;
+  }
 }
 
