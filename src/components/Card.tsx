@@ -23,10 +23,10 @@ const Card = ({
     }
 
   return (
-    <div className={`flex flex-col justify-center text-center gap-4 items-center ${className}`}>
+    <div className={`flex flex-row sm:flex-col justify-between sm:justify-center text-center gap-4 items-center ${className}`}>
       {
         image ? (
-          <div className='relative rounded-full overflow-hidden shadow-md h-20 w-20'>  
+          <div className='relative rounded-full overflow-hidden shadow-md h-16 w-16 sm:h-20 sm:w-20'>  
             <Image
               className={`object-cover`}
               alt={image.altText}
@@ -38,13 +38,13 @@ const Card = ({
             />
           </div>
         ) : (
-          <div className= 'shadow-xs bg-[#283740] text-white h-20 w-20 rounded-full flex justify-center items-center'>
+          <div className= 'shadow-xs bg-[#283740] text-white h-16 w-16 sm:h-20 sm:w-20 rounded-full flex justify-center items-center'>
             <p className='text-2xl font-bold tracking-wide'>{getInitials(name)}</p>
           </div>
         )
       }
 
-      <div className='tracking-wide flex flex-col gap-1'>
+      <div className='tracking-wide text-end sm:text-center flex flex-col gap-1'>
         <p className='font-bold'>{name}</p>
         <p className='text-sm italic font-medium'>{role}, {location}</p>
       </div>

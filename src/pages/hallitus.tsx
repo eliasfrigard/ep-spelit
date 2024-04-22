@@ -72,30 +72,36 @@ export default function Home({
         />
       )}
 
-      <div className='w-full flex flex-col justify-center items-center pb-4 pt-4 lg:py-16 gap-8 px-6'>
+      <div className='w-full flex flex-col justify-center items-center pb-5 pt-5 lg:py-16 gap-8 px-6'>
         {/* <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' /> */}
-        <div className="container w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 flex-wrap">
+        <div className="container w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 sm:gap-y-12 flex-wrap">
           {
-            members.map((member: any) => {
+            members.map((member: any, index) => {
               const photograph = member.fields.photo ? {
                 url: 'https:' + member.fields.photo.fields.file.url,
                 altText: member.fields.photo.fields.title,
               } : undefined
 
               return (
-                <Card
-                  key={member.sys.id} 
-                  name={member.fields.name} 
-                  role={member.fields.role}
-                  location={member.fields.location}
-                  image={photograph}
-                />
-              );
+                <>
+                  <Card
+                    key={member.sys.id} 
+                    name={member.fields.name} 
+                    role={member.fields.role}
+                    location={member.fields.location}
+                    image={photograph}
+                  />
+
+                  {
+                    index !== members.length - 1 && <Divider className="sm:hidden" />
+                  }
+                </>
+              )
             })
           }
         </div>
 
-        <Divider className="w-2/3 my-2 md:my-8"/>
+        <Divider className="hidden sm:block w-2/3 my-2 md:my-8"/>
 
         {files.length > 0 && (
           <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>
