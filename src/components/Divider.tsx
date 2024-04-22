@@ -1,4 +1,5 @@
 import React from 'react'
+import AnimateIn from './AnimateIn'
 
 const Divider = ({
   className,
@@ -6,7 +7,7 @@ const Divider = ({
   className?: string
 }) => {
   return (
-    <div className={`h-[1px] rounded-full opacity-20 bg-[#283740] ${className}`} />
+    <AnimateIn className={`h-[1px] rounded-full opacity-20 bg-[#283740] ${className}`} />
   )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { ContentfulImage } from '@/types'
+import AnimateIn from './AnimateIn'
 
 const Card = ({ 
     image,
@@ -23,7 +24,7 @@ const Card = ({
     }
 
   return (
-    <div className={`flex flex-row sm:flex-col justify-between sm:justify-center text-center gap-4 items-center ${className}`}>
+    <AnimateIn className={`flex flex-row sm:flex-col justify-between sm:justify-center text-center gap-4 items-center ${className}`}>
       {
         image ? (
           <div className='relative rounded-full overflow-hidden shadow-md h-16 w-16 sm:h-20 sm:w-20'>  
@@ -48,7 +49,7 @@ const Card = ({
         <p className='font-bold'>{name}</p>
         <p className='text-sm italic font-medium'>{role}, {location}</p>
       </div>
-    </div>
+    </AnimateIn>
   )
 }
 

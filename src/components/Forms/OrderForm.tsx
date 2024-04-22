@@ -1,4 +1,5 @@
 import React from 'react'
+import AnimateIn from '../AnimateIn'
 
 const Form = ({ 
     subtitle
@@ -6,8 +7,8 @@ const Form = ({
     subtitle: string
   }) => {
   return (
-  <form className='container max-w-4xl flex flex-col gap-6 px-6'> 
-    <div className="">
+  <form className='container max-w-4xl flex flex-col gap-6 px-6 md:mb-4'> 
+    <AnimateIn className="">
       <h2 className="text-lg font-semibold leading-7 text-[#283740]/60">Tilauslomake</h2>
       <p className="mt-1 text-sm leading-6 text-gray-600">{subtitle}</p>
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
@@ -59,7 +60,7 @@ const Form = ({
           </div>
         </div>
       </div>
-    </div>
+    </AnimateIn>
     
     <button type="submit" className='cursor-pointer w-full h-12 bg-red-500/70 text-white rounded-lg font-bold tracking-wide hover:scale-105 duration-300 hover:bg-red-500/100'>Lähetä viesti</button>
   </form>

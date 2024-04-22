@@ -12,7 +12,7 @@ const AnimateIn = ({
   delay = 0,
   ...rest
 } : {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   threshold?: number;
   triggerOnce?: boolean;
