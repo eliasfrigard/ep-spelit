@@ -118,7 +118,7 @@ export default function Layout({
     { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
     { href: '/historia', label: 'historiikki', type: 'link' },
     { href: '/hallitus', label: 'hallitus', type: 'link' },
-    { href: '/yhteytstiedot', label: 'yhteystiedot', type: 'link' },
+    { href: '/yhteystiedot', label: 'yhteystiedot', type: 'link' },
   ]
 
   const socialMedia = {
