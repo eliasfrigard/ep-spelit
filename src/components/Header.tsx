@@ -119,7 +119,7 @@ const Header = ({
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
           </div>
-          <div id='center' className='flex justify-center items-center tracking-widest gap-1'>
+          <div id='center' className='flex justify-center items-center tracking-widest'>
             {routes.map((route, index) => (
               route.type === 'dropdown' ? (
                 <Dropdown href={route.href} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
@@ -130,12 +130,12 @@ const Header = ({
                   className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
                     {/* @ts-ignore */}
-                    <ListItem className={`ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
+                    <ListItem className={`p-2 ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
                 </Link>
               )
             ))}
           </div>
-          <div id='right' className='flex gap-4 xl:gap-5 justify-end items-center min-w-[200px]'>
+          <div id='right' className='flex gap-4 justify-end items-center min-w-[200px]'>
             {socialMedia?.phone && (
               <a href={`tel:${socialMedia.phone}`}>
                 <BsTelephone className='soMeIcon text-lg antialiased' />
