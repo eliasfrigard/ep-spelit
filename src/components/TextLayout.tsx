@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Video from './Video'
 import Container from './Container'
+import DownloadItem from './DownloadItem'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
@@ -21,17 +22,32 @@ const options = {
       }
     },
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      const contentType = node.data.target.fields.file.contentType
       const { url, fileName } = node.data.target.fields.file
+
+      if (contentType.includes('image')) {
+        return (
+          <a href={`http:${url}`}>
+            <Image
+              src={`https:${url}`}
+              alt={fileName}
+              width={node.data.target.fields.file.details.image.width}
+              height={node.data.target.fields.file.details.image.height}
+              className='my-4 rounded'
+            />
+          </a>
+        )
+      }
+
+      console.log(node.data.target.fields.file)
+
       return (
-        <a href={`http:${url}`}>
-          <Image
-            src={`https:${url}`}
-            alt={fileName}
-            width={node.data.target.fields.file.details.image.width}
-            height={node.data.target.fields.file.details.image.height}
-            className='my-4 rounded'
-          />
-        </a>
+        <DownloadItem
+          key={node.data.target.fields.title}
+          title={node.data.target.fields.title}
+          filename={fileName}
+          file={`https:${url}`}
+        />
       )
     },
   },
