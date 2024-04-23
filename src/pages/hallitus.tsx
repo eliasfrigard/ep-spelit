@@ -76,8 +76,7 @@ export default function Home({
       )}
 
       <div className='w-full flex flex-col justify-center items-center pb-5 pt-5 lg:py-16 gap-8 px-6'>
-        <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' />
-
+        <TextLayout text={textContent} className='text-primary-600 max-w-3xl' />
 
         {
           members?.length > 0 && (
