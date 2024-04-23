@@ -1,6 +1,6 @@
 import Banner from "@/components/Banner"
 import Layout from "@/layouts/default"
-import TextLayout from "@/components/TextLayout"
+import EventForm from '@/components/Forms/EventForm'
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../../types'
@@ -15,18 +15,17 @@ export async function getStaticProps() {
 
   const pageRes = await contentful.getEntries({
     content_type: 'event',
-    'fields.eventType': 'loiskeet',
-    select: ['fields.infoBanner', 'fields.infoText'],
+    'fields.eventType': 'spelit',
+    select: ['fields.applicationFormBanner'],
   })
 
   const page = pageRes.items[0].fields
-  const banner: any = page?.infoBanner
+  const banner: any = page?.applicationFormBanner
 
   if (!banner) {
     return {
       props: {
         banner: null,
-        textContent: page.infoText,
       },
     }
   }
@@ -44,20 +43,17 @@ export async function getStaticProps() {
   return {
     props: {
       banner: bannerImage,
-      textContent: page.infoText,
     },
   }
 }
 
 export default function Home({
   banner,
-  textContent,
 } : {
   banner?: ContentfulImage,
-  textContent: any
 }) {
   return (
-    <Layout pageTitle='Esiintyjät'>
+    <Layout pageTitle='Ilmoittautuminen'>
       {banner && (
         <Banner 
           url={banner.url} 
@@ -66,10 +62,10 @@ export default function Home({
         />
       )}
 
-      <div className='py-8 flex flex-col justify-center items-center gap-8 lg:gap-16'>
-        {textContent && (
-          <TextLayout text={textContent} className='text-primary-600' />
-        )}
+      <div className='py-8 flex flex-col justify-center items-center'>
+        <div className="container flex flex-col justify-center items-center">
+          <EventForm subtitle="Tästä voit ilmoittautua esiintyjäksi Speleihin" />
+        </div>
       </div>
     </Layout>
   )

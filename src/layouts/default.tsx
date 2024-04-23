@@ -9,6 +9,7 @@ import {
   ClockIcon,
   MusicalNoteIcon,
   CalendarDaysIcon,
+  DocumentPlusIcon
 } from "@heroicons/react/24/solid"
 
 export default function Layout({
@@ -58,6 +59,12 @@ export default function Layout({
         icon: CalendarDaysIcon,
       },
       {
+        label: "Ilmoittautuminen",
+        href: "/ilmoittautuminen",
+        description: "Ilmoittautaudu Lokakuun Loiskeisiin",
+        icon: DocumentPlusIcon,
+      },
+      {
         label: "Esiintyjät",
         href: "/esiintyjat",
         description: "Artistit 2024 (Lokakuun Loiskeet)",
@@ -82,6 +89,12 @@ export default function Layout({
         href: "/",
         description: "2.-4.8.2024 Etelä-Pohjanmaan Opistolla Ilmajoella",
         icon: CalendarDaysIcon,
+      },
+      {
+        label: "Ilmoittautuminen",
+        href: "/ilmoittautuminen",
+        description: "Ilmoittautaudu Lokakuun Loiskeisiin",
+        icon: DocumentPlusIcon,
       },
       {
         label: "Esiintyjät",

@@ -1,12 +1,16 @@
 import React from 'react'
 import AnimateIn from '../AnimateIn'
 
-const Form = () => {
+const Form = ({
+  subtitle
+} : {
+  subtitle: string
+}) => {
   return (
   <form className='container max-w-4xl flex flex-col gap-6 px-6 md:mb-4'>
     <AnimateIn className="">
       <h2 className="text-lg font-semibold leading-7 text-[#283740]/60">Ilmoittautumislomake</h2>
-      <p className="mt-1 text-sm leading-6 text-gray-600">Tästä voit ilmoittautua esiintyjäksi Lokakuun loiskeisiin 4.-6.10.2024</p>
+      <p className="mt-1 text-sm leading-6 text-gray-600">{subtitle}</p>
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
         <div className="sm:col-span-3">
           <label htmlFor="first-name" className="block text-sm font-bold leading-6 text-[#283740]/60">Etunimi</label>
