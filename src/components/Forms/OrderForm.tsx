@@ -9,7 +9,7 @@ const Form = ({
   return (
   <form className='container max-w-4xl flex flex-col gap-6 px-6 md:mb-4'> 
     <AnimateIn className="">
-      <h2 className="text-lg font-semibold leading-7 text-[#283740]/60">Tilauslomake</h2>
+      <h2 className="text-lg font-semibold leading-7 text-[#283740]/60">Tilauskaavake</h2>
       <p className="mt-1 text-sm leading-6 text-gray-600">{subtitle}</p>
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
         <div className="sm:col-span-3">
