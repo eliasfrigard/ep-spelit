@@ -116,7 +116,7 @@ export default function Layout({
       },
     ]},
     { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
-    { href: '/historia', label: 'historia', type: 'link' },
+    { href: '/historia', label: 'historiikki', type: 'link' },
     { href: '/hallitus', label: 'hallitus', type: 'link' },
   ]
 
