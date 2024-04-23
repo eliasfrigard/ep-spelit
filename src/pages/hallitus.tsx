@@ -3,6 +3,7 @@ import Card from '@/components/Card'
 import Banner from "@/components/Banner"
 import DownloadItem from '@/components/DownloadItem'
 import Divider from "@/components/Divider"
+import TextLayout from "@/components/TextLayout"
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
@@ -27,8 +28,8 @@ export async function getStaticProps() {
       props: {
         banner: null,
         textContent: page.textContent,
-        members: page.boardMembers,
-        files: page.files,
+        members: page.boardMembers || null,
+        files: page.files || null,
       },
     }
   }
@@ -47,8 +48,8 @@ export async function getStaticProps() {
     props: {
       banner: bannerImage,
       textContent: page.textContent,
-      members: page.boardMembers,
-      files: page.files,
+      members: page.boardMembers || null,
+      files: page.files || null,
     },
   }
 }
@@ -56,11 +57,13 @@ export async function getStaticProps() {
 export default function Home({
   banner,
   members,
-  files
+  files,
+  textContent,
 } : {
   banner: ContentfulImage,
   members: any[]
-  files: any[] 
+  files: any[]
+  textContent: any 
 }) {
   return (
     <Layout transparent={true} pageTitle='Hallitus'>
@@ -73,53 +76,64 @@ export default function Home({
       )}
 
       <div className='w-full flex flex-col justify-center items-center pb-5 pt-5 lg:py-16 gap-8 px-6'>
-        {/* <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' /> */}
-        <div className="container w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 sm:gap-y-12 flex-wrap">
-          {
-            members.map((member: any, index) => {
-              const photograph = member.fields.photo ? {
-                url: 'https:' + member.fields.photo.fields.file.url,
-                altText: member.fields.photo.fields.title,
-              } : undefined
+        <TextLayout text={textContent} className='text-primary-600 text-left max-w-3xl' />
 
-              return (
-                <>
-                  <Card
-                    key={member.sys.id} 
-                    name={member.fields.name} 
-                    role={member.fields.role}
-                    location={member.fields.location}
-                    image={photograph}
-                  />
 
-                  {
-                    index !== members.length - 1 && <Divider className="sm:hidden" />
-                  }
-                </>
-              )
-            })
-          }
-        </div>
+        {
+          members?.length > 0 && (
+            <>
+              <Divider className="hidden sm:block w-2/3 my-2 md:my-8"/>
+              <div className="container w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 sm:gap-y-12 flex-wrap">
+                {
+                  members.map((member: any, index) => {
+                    const photograph = member.fields.photo ? {
+                      url: 'https:' + member.fields.photo.fields.file.url,
+                      altText: member.fields.photo.fields.title,
+                    } : undefined
 
-        <Divider className="hidden sm:block w-2/3 my-2 md:my-8"/>
+                    return (
+                      <>
+                        <Card
+                          key={member.sys.id} 
+                          name={member.fields.name} 
+                          role={member.fields.role}
+                          location={member.fields.location}
+                          image={photograph}
+                        />
 
-        {files.length > 0 && (
-          <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>
-            {/* <Title title='Downloads' textColor='text-primary-950' borderColor='border-primary-500' /> */}
-            <div
-              className={`grid grid-flow-row gap-6 md:gap-8 ${files.length > 1 && 'md:grid-cols-2'
-            }`}
-            >
-              {files.map((file) => (
-                <DownloadItem
+                        {
+                          index !== members.length - 1 && <Divider className="sm:hidden" />
+                        }
+                      </>
+                    )
+                  })
+                }
+              </div>
+            </>
+          )
+        }
+
+
+        {files?.length > 0 && (
+          <>
+            <Divider className="hidden sm:block w-2/3 my-2 md:my-8"/>
+            <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>
+              {/* <Title title='Downloads' textColor='text-primary-950' borderColor='border-primary-500' /> */}
+              <div
+                className={`grid grid-flow-row gap-6 md:gap-8 ${files.length > 1 && 'md:grid-cols-2'
+              }`}
+              >
+                {files.map((file) => (
+                  <DownloadItem
                   key={file.sys.id}
                   title={file.fields.title}
                   filename={file.fields.file.fileName}
                   file={`https:${file.fields.file.url}`}
-                />
-              ))}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </Layout>

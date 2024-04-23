@@ -114,7 +114,7 @@ const Header = ({
               width={50}
               height={50}
             />
-            <Link className='flex flex-col cursor-pointer text-sm font-bold tracking-widest uppercase text-start' href='/'>
+            <Link className='hidden 2xl:flex flex-col cursor-pointer text-sm font-bold tracking-widest uppercase text-start' href='/'>
               <p className='duration-200'>{pageName}</p>
               <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
             </Link>
