@@ -125,8 +125,10 @@ export default function Layout({
   ]
 
   const socialMedia = {
-    facebook: 'https://www.facebook.com/EtelapohjalaisetSpelit',
-    email: 'ep.spelit@gmail.com',
+    facebook: headerData.websiteInformation.facebookUrl,
+    email: headerData.websiteInformation.emailAddress,
+    instagram: headerData.websiteInformation.instagramUrl,
+    youTube: headerData.websiteInformation.youTubeUrl,
   }
 
   return (
@@ -141,12 +143,7 @@ export default function Layout({
         transparent={transparent}
         currentRoute={router.pathname}
         routes={routes} 
-        socialMedia={{
-          facebook: headerData.websiteInformation.facebookUrl,
-          email: headerData.websiteInformation.emailAddress,
-          instagram: headerData.websiteInformation.instagramUrl,
-          youTube: headerData.websiteInformation.youTubeUrl,
-        }}
+        socialMedia={socialMedia}
         pageName={pageName}
         pageSubtitle={headerData.websiteInformation.websiteSubtitle}
         logo={headerData.websiteInformation.menuLogo.fields.file}
