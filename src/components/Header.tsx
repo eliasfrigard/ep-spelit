@@ -139,7 +139,7 @@ const Header = ({
               )
             ))}
           </div>
-          <div id='right' className='flex flex-1 gap-4 justify-end items-center min-w-[200px]'>
+          <div id='right' className='flex flex-1 gap-4 justify-end items-center'>
             {socialMedia?.phone && (
               <a href={`tel:${socialMedia.phone}`}>
                 <BsTelephone className='soMeIcon text-lg antialiased' />
