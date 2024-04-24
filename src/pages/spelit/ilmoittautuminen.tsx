@@ -18,7 +18,7 @@ export async function getStaticProps() {
   const pageRes = await contentful.getEntries({
     content_type: 'event',
     'fields.eventType': 'spelit',
-    select: ['fields.applicationFormBanner'],
+    select: ['fields.applicationFormBanner', 'fields.applicationFormSubtitle'],
   })
 
   const page = pageRes.items[0].fields
@@ -29,6 +29,7 @@ export async function getStaticProps() {
       props: {
         banner: null,
         headerData,
+        formSubtitle: page.applicationFormSubtitle,
       },
     }
   }
@@ -47,6 +48,7 @@ export async function getStaticProps() {
     props: {
       banner: bannerImage,
       headerData,
+      formSubtitle: page.applicationFormSubtitle,
     },
   }
 }
@@ -54,9 +56,11 @@ export async function getStaticProps() {
 export default function Home({
   banner,
   headerData,
+  formSubtitle
 } : {
   banner?: ContentfulImage,
   headerData: any
+  formSubtitle: string
 }) {
   return (
     <Layout headerData={headerData} pageTitle={headerData.spelit.applicationPageTitle}>
@@ -70,7 +74,7 @@ export default function Home({
 
       <div className='py-8 flex flex-col justify-center items-center'>
         <div className="container flex flex-col justify-center items-center">
-          <EventForm subtitle="Tästä voit ilmoittautua esiintyjäksi Lokakuun loiskeisiin 4.-6.10.2024" />
+          <EventForm subtitle={formSubtitle} />
         </div>
       </div>
     </Layout>
