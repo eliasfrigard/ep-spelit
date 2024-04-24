@@ -85,7 +85,7 @@ export default function Layout({
         icon: InformationCircleIcon,
       },
     ]},
-    { href: '/loiskeet', label: 'loiskeet', type: 'dropdown', items: [
+    { href: '/loiskeet', label: headerData.loiskeet.title, type: 'dropdown', items: [
       {
         href: "/",
         label: headerData.loiskeet.eventPageTitle,
