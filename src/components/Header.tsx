@@ -18,7 +18,7 @@ const Header = ({
   transparent = false, 
   fadeIn = false,
   font,
-  titleHidden = false
+  titleHidden = false,
 } : {
   routes: any[]
   currentRoute: string

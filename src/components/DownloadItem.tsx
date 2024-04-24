@@ -1,7 +1,17 @@
 import { BsDownload } from 'react-icons/bs'
 import AnimateIn from './AnimateIn'
 
-export default function DownloadItem({ title, filename, file, className }) {
+export default function DownloadItem({ 
+  title, 
+  filename, 
+  file, 
+  className 
+} : {
+  title: string,
+  filename: string,
+  file: string,
+  className?: string
+}) {
   return (
     <a href={file} rel="noopener noreferrer">
       <AnimateIn className={`flex items-center justify-between gap-8 p-6 md:p-8 min-h-[90px] cursor-pointer w-full border-l-8 border-[#283740] rounded-lg bg-[#D2D6D9] shadow-xs hover:bg-[#283740] hover:text-white text-[#283740] hover:text-primary-100 active:scale-[0.97] duration-150 select-none ${className}`}>

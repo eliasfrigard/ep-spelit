@@ -19,6 +19,7 @@ export default function Layout({
   transparent = true,
   titleHidden = false,
   className = '',
+  headerData,
 }: {
   children: React.ReactNode
   pageTitle?: string
@@ -26,7 +27,9 @@ export default function Layout({
   transparent?: boolean
   titleHidden?: boolean
   className?: string
+  headerData: any
 }) {
+  console.log('🚀 || headerData:', headerData)
   const router = useRouter()
 
   const [loading, setLoading] = useState(false)
@@ -51,74 +54,74 @@ export default function Layout({
 
   const routes = [
     { href: '/', label: 'etusivu', type: 'link' },
+    { href: '/spelit', label: headerData.spelit.title, type: 'dropdown', items: [
+      {
+        href: "/",
+        label: headerData.spelit.eventPageTitle,
+        description: headerData.spelit.eventDescription,
+        icon: CalendarDaysIcon,
+      },
+      {
+        label: headerData.spelit.applicationPageTitle,
+        href: "/ilmoittautuminen",
+        description: "Ilmoittautaudu Lokakuun Loiskeisiin",
+        icon: DocumentPlusIcon,
+      },
+      {
+        href: "/esiintyjat",
+        label: headerData.spelit.artistPageTitle,
+        description: headerData.spelit.artistDescription,
+        icon: MusicalNoteIcon,
+      },
+      {
+        href: "/ohjelma",
+        label: headerData.spelit.programPageTitle,
+        description: headerData.spelit.programDescription,
+        icon: ClockIcon,
+      },
+      {
+        href: "/info",
+        label: headerData.spelit.infoPageTitle,
+        description: headerData.spelit.infoDescription,
+        icon: InformationCircleIcon,
+      },
+    ]},
     { href: '/loiskeet', label: 'loiskeet', type: 'dropdown', items: [
       {
-        label: "Lokakuun Loiskeet 2024",
         href: "/",
-        description: "Lokakuun loiskeet -pelimannitapahtuma 4.-6.10.2024",
+        label: headerData.loiskeet.eventPageTitle,
+        description: headerData.loiskeet.eventDescription,
         icon: CalendarDaysIcon,
       },
       {
-        label: "Ilmoittautuminen",
         href: "/ilmoittautuminen",
-        description: "Ilmoittautaudu Lokakuun Loiskeisiin",
+        label: headerData.loiskeet.applicationPageTitle,
+        description: headerData.loiskeet.applicationPageDescription,
         icon: DocumentPlusIcon,
       },
       {
-        label: "Esiintyjät",
         href: "/esiintyjat",
-        description: "Artistit 2024 (Lokakuun Loiskeet)",
+        label: headerData.loiskeet.artistPageTitle,
+        description: headerData.loiskeet.artistDescription,
         icon: MusicalNoteIcon,
       },
       {
-        label: "Ohjelma",
         href: "/ohjelma",
-        description: "Ohjelma 2024 (Lokakuun Loiskeet)",
+        label: headerData.loiskeet.programPageTitle,
+        description: headerData.loiskeet.programDescription,
         icon: ClockIcon,
       },
       {
-        label: "Info",
         href: "/info",
-        description: "Info yleisölle, artisteille ja pelimanneille",
+        label: headerData.loiskeet.infoPageTitle,
+        description: headerData.loiskeet.infoDescription,
         icon: InformationCircleIcon,
       },
     ]},
-    { href: '/spelit', label: 'spelit', type: 'dropdown', items: [
-      {
-        label: "Spelit 2024",
-        href: "/",
-        description: "2.-4.8.2024 Etelä-Pohjanmaan Opistolla Ilmajoella",
-        icon: CalendarDaysIcon,
-      },
-      {
-        label: "Ilmoittautuminen",
-        href: "/ilmoittautuminen",
-        description: "Ilmoittautaudu Lokakuun Loiskeisiin",
-        icon: DocumentPlusIcon,
-      },
-      {
-        label: "Esiintyjät",
-        href: "/esiintyjat",
-        description: "Eteläpohjalaiset spelit artistit 2024",
-        icon: MusicalNoteIcon,
-      },
-      {
-        label: "Ohjelma",
-        href: "/ohjelma",
-        description: "Eteläpohjalaiset spelit ohjelma 2024",
-        icon: ClockIcon,
-      },
-      {
-        label: "Info",
-        href: "/info",
-        description: "Info yleisölle, artisteille ja pelimanneille",
-        icon: InformationCircleIcon,
-      },
-    ]},
-    { href: '/nuottivihko', label: 'nuottivihko', type: 'link' },
-    { href: '/historia', label: 'historiikki', type: 'link' },
-    { href: '/hallitus', label: 'hallitus', type: 'link' },
-    { href: '/yhteystiedot', label: 'yhteystiedot', type: 'link' },
+    { href: '/historia', label: headerData.history.title, type: 'link' },
+    { href: '/nuottivihko', label: headerData.music.title, type: 'link' },
+    { href: '/hallitus', label: headerData.board.title, type: 'link' },
+    { href: '/yhteystiedot', label: headerData.contact.title, type: 'link' },
   ]
 
   const socialMedia = {
