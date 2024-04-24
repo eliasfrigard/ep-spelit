@@ -39,8 +39,6 @@ const options = {
         )
       }
 
-      console.log(node.data.target.fields.file)
-
       return (
         <DownloadItem
           key={node.data.target.fields.title}
