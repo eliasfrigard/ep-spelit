@@ -52,7 +52,7 @@ export default function Layout({
   const pageName = 'Eteläpohjalaiset Spelit'
 
   const routes = [
-    { href: '/', label: 'etusivu', type: 'link' },
+    { href: '/', label: headerData.home.pageTitle, type: 'link' },
     { href: '/spelit', label: headerData.spelit.title, type: 'dropdown', items: [
       {
         href: "/",
