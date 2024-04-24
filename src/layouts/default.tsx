@@ -64,7 +64,7 @@ export default function Layout({
       {
         href: "/ilmoittautuminen",
         label: headerData.spelit.applicationPageTitle,
-        description: headerData.loiskeet.applicationPageDescription,
+        description: headerData.spelit.applicationPageDescription,
         icon: DocumentPlusIcon,
       },
       {
