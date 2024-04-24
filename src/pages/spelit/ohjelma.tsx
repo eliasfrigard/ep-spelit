@@ -6,8 +6,10 @@ import { createClient } from 'contentful'
 import { ContentfulImage } from '../../types'
 import { getImageBuffer } from 'eliasfrigard-reusable-components'
 import { getPlaiceholder } from 'plaiceholder'
+import { getHeaderData } from "@/lib/getHeaderData"
 
 export async function getStaticProps() {
+  const headerData = await getHeaderData()
   const contentful = createClient({
     space: process.env.SPACE_ID || '',
     accessToken: process.env.ACCESS_TOKEN || '',
@@ -27,6 +29,7 @@ export async function getStaticProps() {
       props: {
         banner: null,
         textContent: page.programText,
+        headerData
       },
     }
   }
@@ -45,6 +48,7 @@ export async function getStaticProps() {
     props: {
       banner: bannerImage,
       textContent: page.programText,
+      headerData
     },
   }
 }
@@ -52,12 +56,14 @@ export async function getStaticProps() {
 export default function Home({
   banner,
   textContent,
+  headerData
 } : {
   banner?: ContentfulImage,
   textContent: any
+  headerData: any
 }) {
   return (
-    <Layout pageTitle='Esiintyjät'>
+    <Layout headerData={headerData} pageTitle={headerData.spelit.programPageTitle}>
       {banner && (
         <Banner 
           url={banner.url} 

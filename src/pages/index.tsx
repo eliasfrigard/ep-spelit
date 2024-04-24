@@ -63,7 +63,7 @@ export default function Home({
   headerData: any
 }) {
   return (
-    <Layout headerData={headerData}>
+    <Layout headerData={headerData} pageTitle={headerData.board.title}>
       {banner && (
         <Banner 
           url={banner.url} 

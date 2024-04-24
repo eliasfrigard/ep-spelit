@@ -9,8 +9,11 @@ import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
 import { getImageBuffer } from 'eliasfrigard-reusable-components'
 import { getPlaiceholder } from 'plaiceholder'
+import { getHeaderData } from "@/lib/getHeaderData"
 
 export async function getStaticProps() {
+  const headerData = await getHeaderData()  
+  
   const contentful = createClient({
     space: process.env.SPACE_ID || '',
     accessToken: process.env.ACCESS_TOKEN || '',
@@ -30,6 +33,7 @@ export async function getStaticProps() {
         textContent: page.textContent,
         members: page.boardMembers || null,
         files: page.files || null,
+        headerData,
       },
     }
   }
@@ -50,6 +54,7 @@ export async function getStaticProps() {
       textContent: page.textContent,
       members: page.boardMembers || null,
       files: page.files || null,
+      headerData,
     },
   }
 }
@@ -59,14 +64,16 @@ export default function Home({
   members,
   files,
   textContent,
+  headerData
 } : {
   banner: ContentfulImage,
   members: any[]
   files: any[]
   textContent: any 
+  headerData: any
 }) {
   return (
-    <Layout transparent={true} pageTitle='Hallitus'>
+    <Layout headerData={headerData} pageTitle={headerData.board.title}>
       {banner && (
         <Banner 
           url={banner.url} 
