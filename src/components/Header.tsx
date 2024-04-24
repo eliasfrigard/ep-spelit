@@ -14,15 +14,18 @@ const Header = ({
   routes = [],
   currentRoute,
   pageName,
+  pageSubtitle,
   socialMedia, 
   transparent = false, 
   fadeIn = false,
   font,
   titleHidden = false,
+  logo
 } : {
   routes: any[]
   currentRoute: string
   pageName: string
+  pageSubtitle?: string
   socialMedia: {
     phone?: string
     email?: string
@@ -34,7 +37,8 @@ const Header = ({
   transparent?: boolean
   fadeIn?: boolean
   font: string,
-  titleHidden?: boolean
+  titleHidden?: boolean,
+  logo: any
 }) => {
   const [currentYear, setCurrentYear] = React.useState('')
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
@@ -107,19 +111,19 @@ const Header = ({
           ${font}
         `}
         >
-          <div id='left' className='text-center flex gap-3 justify-center items-center'>
+          <div id='left' className='flex-1 text-center hidden 2xl:flex gap-3 justify-start items-center'>
             <Image 
-              src='/Spelit-logo-pieni-transparent.png'
-              alt='Kansanmusiikkiyhdistys ry. logo'
+              src={'https:' + logo.url + '?w=50&h=50'}
+              alt={logo.fileName}
               width={50}
               height={50}
             />
-            <Link className='hidden 2xl:flex flex-col cursor-pointer text-sm font-bold tracking-widest uppercase text-start' href='/'>
+            <Link className='hidden flex-col cursor-pointer text-xs font-bold tracking-widest uppercase text-start' href='/'>
               <p className='duration-200'>{pageName}</p>
-              <p className='duration-200 font-normal text-[12px]'>Kansanmusiikkiyhdistys ry.</p>
+              <p className='duration-200 font-normal text-[10px]'>{pageSubtitle}</p>
             </Link>
           </div>
-          <div id='center' className='flex justify-center items-center tracking-widest'>
+          <div id='center' className='flex-auto flex tracking-wide items-center justify-center'>
             {routes.map((route, index) => (
               route.type === 'dropdown' ? (
                 <Dropdown href={route.href} isScrolled={scrolled} currentRoute={currentRoute} key={index} label={route.label} items={route.items} />
@@ -130,12 +134,12 @@ const Header = ({
                   className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
                     {/* @ts-ignore */}
-                    <ListItem className={`p-2 ease-linear flex items-center text-base capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
+                    <ListItem className={`p-3 ease-linear text-wrap items-center text-sm text-center capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
                 </Link>
               )
             ))}
           </div>
-          <div id='right' className='flex gap-4 justify-end items-center min-w-[200px]'>
+          <div id='right' className='flex flex-1 gap-4 justify-end items-center min-w-[200px]'>
             {socialMedia?.phone && (
               <a href={`tel:${socialMedia.phone}`}>
                 <BsTelephone className='soMeIcon text-lg antialiased' />
@@ -192,14 +196,14 @@ const Header = ({
             <Link className={`${titleHidden ? 'hidden' : 'flex'} flex-col text-center gap-1 cursor-pointer text-[10px] md:text-[14px] font-bold tracking-widest uppercase`} href='/'>
               <div id='left' className='text-start flex gap-3 justify-center items-center'>
                 <Image 
-                  src='/Spelit-logo-pieni-transparent.png'
-                  alt='Kansanmusiikkiyhdistys ry. logo'
+                  src={'https:' + logo.url + '?w=40&h=40'}
+                  alt={logo.fileName}
                   width={40}
                   height={40}
                 />
                 <div className='flex flex-col gap-1'>
                   <p>{pageName}</p>
-                  <p className=' font-normal text-[9px] md:text-[13px]'>Kansanmusiikkiyhdistys ry.</p>
+                  <p className=' font-normal text-[9px] md:text-[13px]'>{pageSubtitle}</p>
                 </div>
               </div>
             </Link>
@@ -211,14 +215,14 @@ const Header = ({
       </div>
 
       <div
-        className={`xl:hidden  px-8 fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-[#283740] z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
+        className={`xl:hidden px-8 fixed flex flex-col justify-evenly items-center pt-[85px] h-screen w-screen bg-[#283740] z-40 duration-300 transform ${!mobileNavOpen && '-translate-y-[100vh]'
           }`}
       >
-        <div className='container flex flex-col justify-center items-start gap-2 text-primary-100 font-khorla'>
+        <div className='container flex flex-col justify-center items-start gap-2 text-white font-khorla'>
           {routes.map((route, index) => (
             route.type === 'dropdown' ? (
               // @ts-ignore
-              <Dropdown key={index} href={route.href} label={route.label} items={route.items} />
+              <Dropdown key={index} href={route.href} label={route.label} items={route.items} className="text-white" />
             ) : (
               <Link
                 key={index}

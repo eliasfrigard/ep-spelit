@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -49,7 +50,7 @@ export default function Layout({
   }, [router])
 
   const author = 'Elias Frigård'
-  const pageName = 'Eteläpohjalaiset Spelit'
+  const pageName = headerData.websiteInformation.websiteTitle
 
   const routes = [
     { href: '/', label: headerData.home.pageTitle, type: 'link' },
@@ -61,9 +62,9 @@ export default function Layout({
         icon: CalendarDaysIcon,
       },
       {
-        label: headerData.spelit.applicationPageTitle,
         href: "/ilmoittautuminen",
-        description: "Ilmoittautaudu Lokakuun Loiskeisiin",
+        label: headerData.spelit.applicationPageTitle,
+        description: headerData.loiskeet.applicationPageDescription,
         icon: DocumentPlusIcon,
       },
       {
@@ -130,16 +131,27 @@ export default function Layout({
 
   return (
     <>
+      <Head>
+        <link rel="icon" type="image/png" href={headerData.websiteInformation.favicon.fields.file.url} />
+      </Head>
+
       <title>{`${pageTitle ? pageTitle + ' | ' : ''}${pageName}`}</title>
 
       <Header
         transparent={transparent}
         currentRoute={router.pathname}
         routes={routes} 
-        socialMedia={socialMedia}
+        socialMedia={{
+          facebook: headerData.websiteInformation.facebookUrl,
+          email: headerData.websiteInformation.emailAddress,
+          instagram: headerData.websiteInformation.instagramUrl,
+          youTube: headerData.websiteInformation.youTubeUrl,
+        }}
         pageName={pageName}
-        font='font-khorla'
+        pageSubtitle={headerData.websiteInformation.websiteSubtitle}
+        logo={headerData.websiteInformation.menuLogo.fields.file}
         titleHidden={titleHidden}
+        font='font-mont'
       />
       <main
         style={{ transition: 'opacity-90 200ms ease-out' }}

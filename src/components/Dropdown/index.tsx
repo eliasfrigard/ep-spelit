@@ -19,6 +19,7 @@ const Dropdown = ({
   items,
   isScrolled,
   currentRoute,
+  className,
 } : {
   href: string,
   label: string,
@@ -30,6 +31,7 @@ const Dropdown = ({
     description: string,
     icon: any,
   }[],
+  className?: string,
 }) => {
   const [openNav, setOpenNav] = React.useState(false)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -60,8 +62,8 @@ const Dropdown = ({
   }, [])
 
   return (
-    <div className="w-full flex items-center justify-between text-blue-gray-900">
-      <div className="w-full">
+    <div className="w-full xl:w-auto flex items-center justify-between text-blue-gray-900">
+      <div className="w-full xl:w-auto">
         <React.Fragment>
           <Menu
             open={isMenuOpen}
@@ -71,23 +73,23 @@ const Dropdown = ({
             allowHover={true}
           >
             <MenuHandler>
-              <div className={`w-full text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
+              <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
                 {/* @ts-ignore */}
                 <ListItem
-                  className={`flex items-center gap-1 p-2 text-base tracking-wide capitalize ease-linear`}
+                  className={`flex items-center text-center gap-1 p-3 xl:text-sm tracking-wide capitalize ease-linear font-medium xl:font-normal ${className}`}
                   selected={isMenuOpen || isMobileMenuOpen}
                   onClick={() => setIsMobileMenuOpen((cur) => !cur)}
                 >
                   {label}
                   <ChevronDownIcon
                     strokeWidth={2.5}
-                    className={`hidden h-3 w-3 transition-transform lg:block ease-linear${
+                    className={`hidden h-2 w-2 transition-transform lg:block ease-linear${
                       isMenuOpen ? "rotate-180" : ""
                     }`}
                   />
                   <ChevronDownIcon
                     strokeWidth={2.5}
-                    className={`block h-3 w-3 transition-transform lg:hidden ease-linear ${
+                    className={`block h- w-2 transition-transform lg:hidden ease-linear ${
                       isMobileMenuOpen ? "rotate-180" : ""
                     }`}
                   />

@@ -6,6 +6,10 @@ export const getHeaderData = async () => {
     accessToken: process.env.ACCESS_TOKEN || '',
   })
 
+  const websiteRes = await contentful.getEntries({
+    content_type: 'websiteInformation',
+  })
+
   const loiskeetRes = await contentful.getEntries({
     content_type: 'event',
     'fields.eventType': 'loiskeet',
@@ -44,6 +48,7 @@ export const getHeaderData = async () => {
   })
 
   return {
+    websiteInformation: websiteRes.items[0].fields,
     loiskeet: loiskeetRes.items[0].fields,
     spelit: spelitRes.items[0].fields,
     contact: contactRes.items[0].fields,
