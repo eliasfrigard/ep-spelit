@@ -32,6 +32,7 @@ export default function Layout({
   className?: string
   headerData: any
 }) {
+  console.log('🚀 || headerData:', headerData)
   const router = useRouter()
 
   const [loading, setLoading] = useState(false)
@@ -85,6 +86,12 @@ export default function Layout({
         href: "/info",
         label: headerData.spelit.infoPageTitle,
         description: headerData.spelit.infoDescription,
+        icon: InformationCircleIcon,
+      },
+      {
+        href: "/spelikurssi",
+        label: headerData.spelikurssi.title,
+        description: headerData.spelikurssi.description,
         icon: InformationCircleIcon,
       },
     ]},

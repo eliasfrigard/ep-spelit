@@ -47,6 +47,12 @@ export const getHeaderData = async () => {
     select: ['fields.title'],
   })
 
+  const courseRes = await contentful.getEntries({
+    content_type: 'contentPage',
+    'fields.type': 'spelikurssi',
+    select: ['fields.title', 'fields.description'],
+  })
+
   return {
     websiteInformation: websiteRes.items[0].fields,
     loiskeet: loiskeetRes.items[0].fields,
@@ -56,5 +62,6 @@ export const getHeaderData = async () => {
     home: homeRes.items[0].fields,
     board: boardRes.items[0].fields,
     history: historyRes.items[0].fields,
+    spelikurssi: courseRes.items[0].fields,
   }
 }
