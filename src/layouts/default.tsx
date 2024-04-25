@@ -10,7 +10,9 @@ import {
   ClockIcon,
   MusicalNoteIcon,
   CalendarDaysIcon,
-  DocumentPlusIcon
+  DocumentPlusIcon,
+  UserGroupIcon,
+  DocumentIcon
 } from "@heroicons/react/24/solid"
 
 export default function Layout({
@@ -120,7 +122,21 @@ export default function Layout({
     ]},
     { href: '/historia', label: headerData.history.title, type: 'link' },
     { href: '/nuottivihko', label: headerData.music.title, type: 'link' },
-    { href: '/hallitus', label: headerData.board.title, type: 'link' },
+    { href: '/hallitus', label: headerData.board.title, type: 'dropdown', items: [
+      {
+        href: "/",
+        label: headerData.board.boardPageTitle,
+        description: headerData.board.boardPageDescription,
+        icon: UserGroupIcon,
+      },
+      {
+        type: 'link',
+        icon: DocumentIcon,
+        label: headerData.board.placesAndGroupsFile.fields.title,
+        description: headerData.board.placesAndGroupsFile.fields.description,
+        href: 'https:' + headerData.board.placesAndGroupsFile.fields.file.url,
+      },
+    ]},
     { href: '/yhteystiedot', label: headerData.contact.title, type: 'link' },
   ]
 

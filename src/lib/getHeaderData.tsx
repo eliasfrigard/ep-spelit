@@ -39,7 +39,7 @@ export const getHeaderData = async () => {
 
   const boardRes = await contentful.getEntries({
     content_type: 'hallitus',
-    select: ['fields.title'],
+    select: ['fields.title', 'fields.boardPageTitle', 'fields.boardPageDescription', 'fields.placesAndGroupsFile'],
   })
 
   const historyRes = await contentful.getEntries({

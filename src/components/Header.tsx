@@ -134,7 +134,7 @@ const Header = ({
                   className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
                   >
                     {/* @ts-ignore */}
-                    <ListItem className={`p-3 ease-linear text-wrap items-center text-sm text-center capitalize ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
+                    <ListItem className={`p-3 ease-linear text-wrap items-center text-sm text-center ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
                 </Link>
               )
             ))}
@@ -227,10 +227,10 @@ const Header = ({
               <Link
                 key={index}
                 href={route.href}
-                className={`${activeLinkStyling(route.href)} hover:text-accent-500 capitalize font-medium w-full`}
+                className={`${activeLinkStyling(route.href)} hover:text-accent-500 font-medium w-full`}
               >
                 {/* @ts-ignore */}
-                <ListItem className="flex items-center w-full gap-2 py-2 text-base tracking-wide pr-4 capitalize text-white">{route.label}</ListItem>
+                <ListItem className="flex items-center w-full gap-2 py-2 text-base tracking-wide pr-4 text-white">{route.label}</ListItem>
               </Link>
             )
           ))}

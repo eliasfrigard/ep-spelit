@@ -30,6 +30,7 @@ const Dropdown = ({
     href: string,
     description: string,
     icon: any,
+    type: string,
   }[],
   className?: string,
 }) => {
@@ -53,6 +54,7 @@ const Dropdown = ({
         description={item.description}
         href={item.href}
         icon={item.icon}
+        type={item.type}
       />
     )
   )
@@ -76,7 +78,7 @@ const Dropdown = ({
               <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
                 {/* @ts-ignore */}
                 <ListItem
-                  className={`flex items-center text-center gap-1 p-3 xl:text-sm tracking-wide capitalize ease-linear font-medium xl:font-normal ${className}`}
+                  className={`flex items-center text-center gap-1 p-3 xl:text-sm tracking-wide ease-linear font-medium xl:font-normal ${className}`}
                   selected={isMenuOpen || isMobileMenuOpen}
                   onClick={() => setIsMobileMenuOpen((cur) => !cur)}
                 >
