@@ -41,7 +41,7 @@ const Dropdown = ({
   const activeLinkStyling = (path: string) => {
     if (path === '/') return
 
-    const style = 'font-medium text-accent-500'
+    const style = 'font-bold'
 
     if (currentRoute?.startsWith(path)) return style
   }
@@ -64,7 +64,7 @@ const Dropdown = ({
   }, [])
 
   return (
-    <div className="w-full xl:w-auto flex items-center justify-between text-blue-gray-900">
+    <div className="w-full xl:w-auto max-w-[140px] flex items-center justify-between text-blue-gray-900">
       <div className="w-full xl:w-auto">
         <React.Fragment>
           <Menu
@@ -78,7 +78,7 @@ const Dropdown = ({
               <div className={`text-white ${isScrolled ? 'lg:text-white' : 'lg:text-black'} duration-400 ease-linear ${activeLinkStyling(href)}`}>
                 {/* @ts-ignore */}
                 <ListItem
-                  className={`flex items-center text-center gap-1 p-3 xl:text-sm tracking-wide ease-linear font-medium xl:font-normal ${className}`}
+                  className={`flex hover:bg-[#D2D6D9] items-center text-center gap-1 p-3 xl:text-sm tracking-wide ease-linear font-medium xl:font-normal ${className}`}
                   selected={isMenuOpen || isMobileMenuOpen}
                   onClick={() => setIsMobileMenuOpen((cur) => !cur)}
                 >
@@ -91,7 +91,7 @@ const Dropdown = ({
                   />
                   <ChevronDownIcon
                     strokeWidth={2.5}
-                    className={`block h- w-2 transition-transform lg:hidden ease-linear ${
+                    className={`block h-2 w-2 transition-transform lg:hidden ease-linear ${
                       isMobileMenuOpen ? "rotate-180" : ""
                     }`}
                   />

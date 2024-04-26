@@ -21,7 +21,6 @@ const DropdownItem = ({
   icon: any,
   type?: string,
 }) => {
-  console.log('🚀 || type:', type)
   if (type === 'link') {
     return (
       <a href={href}>

@@ -51,7 +51,7 @@ const Header = ({
   const activeLinkStyling = (path: string) => {
     if (currentRoute !== path) return
 
-    const style = 'font-medium text-accent-500'
+    const style = 'font-bold'
 
     if (currentRoute.startsWith(path)) return style
   }
@@ -98,7 +98,6 @@ const Header = ({
         <div
           className={`
           hidden
-          xl:gap-16
           xl:flex
           justify-between
           items-center
@@ -111,14 +110,14 @@ const Header = ({
           ${font}
         `}
         >
-          <div id='left' className='flex-1 text-center hidden 2xl:flex gap-3 justify-start items-center'>
+          <div id='left' className='flex-2 3xl:flex-1 text-center flex gap-3 justify-start items-center'>
             <Image 
               src={'https:' + logo.url + '?w=50&h=50'}
               alt={logo.fileName}
-              width={50}
-              height={50}
+              width={65}
+              height={65}
             />
-            <Link className='hidden flex-col cursor-pointer text-xs font-bold tracking-widest uppercase text-start' href='/'>
+            <Link className='flex-col hidden 2xl:flex cursor-pointer text-xs font-bold tracking-widest uppercase text-start' href='/'>
               <p className='duration-200'>{pageName}</p>
               <p className='duration-200 font-normal text-[10px]'>{pageSubtitle}</p>
             </Link>
@@ -131,10 +130,10 @@ const Header = ({
                 <Link
                   key={index}
                   href={route.href}
-                  className={`${activeLinkStyling(route.href)} hover:text-accent-500`}
+                  className={`${scrolled ? 'text-white' : 'text-black'} ${activeLinkStyling(route.href)}`}
                   >
                     {/* @ts-ignore */}
-                    <ListItem className={`p-3 ease-linear text-wrap items-center text-sm text-center ${scrolled ? 'text-white' : 'text-black'} duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
+                    <ListItem className={`p-3 max-w-[140px] ease-linear text-wrap items-center text-sm text-center duration-300 hover:bg-[#D2D6D9]`}>{route.label}</ListItem>
                 </Link>
               )
             ))}
@@ -198,10 +197,10 @@ const Header = ({
                 <Image 
                   src={'https:' + logo.url + '?w=40&h=40'}
                   alt={logo.fileName}
-                  width={40}
-                  height={40}
+                  width={55}
+                  height={55}
                 />
-                <div className='flex flex-col gap-1'>
+                <div className='flex flex-col'>
                   <p>{pageName}</p>
                   <p className=' font-normal text-[9px] md:text-[13px]'>{pageSubtitle}</p>
                 </div>
