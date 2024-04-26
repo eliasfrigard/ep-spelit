@@ -65,6 +65,12 @@ export default function Layout({
         icon: CalendarDaysIcon,
       },
       {
+        href: "/spelikurssi",
+        label: headerData.spelikurssi.title,
+        description: headerData.spelikurssi.description,
+        icon: InformationCircleIcon,
+      },
+      {
         href: "/ilmoittautuminen",
         label: headerData.spelit.applicationPageTitle,
         description: headerData.spelit.applicationPageDescription,
@@ -86,12 +92,6 @@ export default function Layout({
         href: "/info",
         label: headerData.spelit.infoPageTitle,
         description: headerData.spelit.infoDescription,
-        icon: InformationCircleIcon,
-      },
-      {
-        href: "/spelikurssi",
-        label: headerData.spelikurssi.title,
-        description: headerData.spelikurssi.description,
         icon: InformationCircleIcon,
       },
     ]},
