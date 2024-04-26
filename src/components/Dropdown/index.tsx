@@ -64,7 +64,7 @@ const Dropdown = ({
   }, [])
 
   return (
-    <div className="w-full xl:w-auto max-w-[140px] flex items-center justify-between text-blue-gray-900">
+    <div className="w-full xl:w-auto xl:max-w-[140px] flex items-center justify-between text-blue-gray-900">
       <div className="w-full xl:w-auto">
         <React.Fragment>
           <Menu
