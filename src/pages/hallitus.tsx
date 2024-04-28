@@ -1,7 +1,6 @@
 import Layout from "@/layouts/default"
 import Card from '@/components/Card'
 import Banner from "@/components/Banner"
-import DownloadItem from '@/components/DownloadItem'
 import Divider from "@/components/Divider"
 import TextLayout from "@/components/TextLayout"
 
@@ -32,7 +31,6 @@ export async function getStaticProps() {
         banner: null,
         textContent: page.textContent,
         members: page.boardMembers || null,
-        files: page.files || null,
         headerData,
       },
     }
@@ -53,7 +51,6 @@ export async function getStaticProps() {
       banner: bannerImage,
       textContent: page.textContent,
       members: page.boardMembers || null,
-      files: page.files || null,
       headerData,
     },
   }
@@ -62,13 +59,11 @@ export async function getStaticProps() {
 export default function Home({
   banner,
   members,
-  files,
   textContent,
   headerData
 } : {
   banner: ContentfulImage,
   members: any[]
-  files: any[]
   textContent: any 
   headerData: any
 }) {
@@ -118,29 +113,6 @@ export default function Home({
             </>
           )
         }
-
-
-        {files?.length > 0 && (
-          <>
-            <Divider className="hidden sm:block w-2/3 my-2 md:my-8"/>
-            <div className='container flex flex-col gap-2 md:gap-12 md:px-0'>
-              {/* <Title title='Downloads' textColor='text-primary-950' borderColor='border-primary-500' /> */}
-              <div
-                className={`grid grid-flow-row gap-6 md:gap-8 ${files.length > 1 && 'md:grid-cols-2'
-              }`}
-              >
-                {files.map((file) => (
-                  <DownloadItem
-                  key={file.sys.id}
-                  title={file.fields.title}
-                  filename={file.fields.file.fileName}
-                  file={`https:${file.fields.file.url}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </>
-        )}
       </div>
     </Layout>
   )
