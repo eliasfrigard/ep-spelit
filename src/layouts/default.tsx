@@ -65,6 +65,12 @@ export default function Layout({
         icon: CalendarDaysIcon,
       },
       {
+        href: "/soittokilpailut",
+        label: headerData.soittokilpailut.title,
+        description: headerData.soittokilpailut.description,
+        icon: InformationCircleIcon,
+      },
+      {
         href: "/spelikurssi",
         label: headerData.spelikurssi.title,
         description: headerData.spelikurssi.description,
@@ -136,13 +142,13 @@ export default function Layout({
         description: headerData.board.boardPageDescription,
         icon: UserGroupIcon,
       },
-      {
+      ...headerData.board.files.map((file: any) => ({
         type: 'link',
+        href: 'https:' + file.fields.file.url,
+        label: file.fields.title,
+        description: file.fields.description,
         icon: DocumentIcon,
-        label: headerData.board.placesAndGroupsFile.fields.title,
-        description: headerData.board.placesAndGroupsFile.fields.description,
-        href: 'https:' + headerData.board.placesAndGroupsFile.fields.file.url,
-      },
+      })),
     ]},
     { href: '/yhteystiedot', label: headerData.contact.title, type: 'link' },
   ]

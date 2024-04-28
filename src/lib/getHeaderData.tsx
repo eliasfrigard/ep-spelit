@@ -39,7 +39,7 @@ export const getHeaderData = async () => {
 
   const boardRes = await contentful.getEntries({
     content_type: 'hallitus',
-    select: ['fields.title', 'fields.boardPageTitle', 'fields.boardPageDescription', 'fields.placesAndGroupsFile'],
+    select: ['fields.title', 'fields.boardPageTitle', 'fields.boardPageDescription', 'fields.files'],
   })
 
   const historyRes = await contentful.getEntries({
@@ -53,6 +53,12 @@ export const getHeaderData = async () => {
     select: ['fields.title', 'fields.description'],
   })
 
+  const competitionRes = await contentful.getEntries({
+    content_type: 'contentPage',
+    'fields.type': 'soittokilpailut',
+    select: ['fields.title', 'fields.description'],
+  })
+
   return {
     websiteInformation: websiteRes.items[0].fields,
     loiskeet: loiskeetRes.items[0].fields,
@@ -63,5 +69,6 @@ export const getHeaderData = async () => {
     board: boardRes.items[0].fields,
     history: historyRes.items[0].fields,
     spelikurssi: courseRes.items[0].fields,
+    soittokilpailut: competitionRes.items[0].fields,
   }
 }
