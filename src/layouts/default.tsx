@@ -32,7 +32,6 @@ export default function Layout({
   className?: string
   headerData: any
 }) {
-  console.log('🚀 || headerData:', headerData)
   const router = useRouter()
 
   const [loading, setLoading] = useState(false)
