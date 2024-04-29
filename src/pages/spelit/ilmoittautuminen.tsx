@@ -74,7 +74,7 @@ export default function Home({
 
       <div className='py-8 flex flex-col justify-center items-center'>
         <div className="container flex flex-col justify-center items-center">
-          <EventForm subtitle={formSubtitle} />
+        <EventForm subtitle={formSubtitle} eventType={headerData.spelit.title} />
         </div>
       </div>
     </Layout>

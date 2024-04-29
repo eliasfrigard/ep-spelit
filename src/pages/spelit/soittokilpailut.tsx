@@ -63,7 +63,7 @@ export default function Home({
   headerData: any
 }) {
   return (
-    <Layout headerData={headerData} pageTitle={headerData.spelikurssi.title}>
+    <Layout headerData={headerData} pageTitle={headerData.soittokilpailut.title}>
       {banner && (
         <Banner 
           url={banner.url} 

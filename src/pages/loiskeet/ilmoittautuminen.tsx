@@ -63,7 +63,7 @@ export default function Home({
   formSubtitle: string
 }) {
   return (
-    <Layout headerData={headerData} pageTitle={headerData.spelit.applicationPageTitle}>
+    <Layout headerData={headerData} pageTitle={headerData.loiskeet.applicationPageTitle}>
       {banner && (
         <Banner 
           url={banner.url} 
@@ -74,7 +74,7 @@ export default function Home({
 
       <div className='py-8 flex flex-col justify-center items-center'>
         <div className="container flex flex-col justify-center items-center">
-          <EventForm subtitle={formSubtitle} />
+          <EventForm subtitle={formSubtitle} eventType={headerData.loiskeet.title} />
         </div>
       </div>
     </Layout>

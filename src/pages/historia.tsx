@@ -75,7 +75,7 @@ export default function Historia({
       <div className='flex flex-col w-full justify-center items-center py-8 lg: gap-8 lg:gap-16'>
         <TextLayout text={textContent} className='text-primary-600' />
         <Divider className='w-2/3' />
-        <Form subtitle="Tällä lomakkeella voit tilata Spelien 50-vuotishistoriikin hintaan 25€+toimituskulut" />
+        <Form productType="history" subtitle="Tällä lomakkeella voit tilata Spelien 50-vuotishistoriikin hintaan 25€+toimituskulut" />
       </div>
     </Layout>
   )
