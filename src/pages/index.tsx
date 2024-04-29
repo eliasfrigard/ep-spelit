@@ -80,7 +80,7 @@ export default function Home({
         />
       )}
 
-      <div className="py-14 flex flex-col justify-center items-center gap-14">
+      <div className="py-8 lg:py-14 flex flex-col justify-center items-center gap-8 lg:gap-14">
         {
           textContent && (
             <TextLayout text={textContent} className='text-primary-600' />
@@ -100,7 +100,7 @@ export default function Home({
                     />
                 </div>
 
-                <div className={`w-full grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-3 lg:gap-6`}>
+                <div className={`w-full grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-4 lg:gap-6`}>
                   {videos.map((video: any, index: any) => {
                   if (index === 0) return null
                   return (
