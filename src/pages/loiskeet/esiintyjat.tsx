@@ -30,7 +30,7 @@ export async function getStaticProps() {
       props: {
         banner: null,
         textContent: page.artistText  || null,
-        artists: page.artists,
+        artists: page.artists || null,
         headerData,
       },
     }
@@ -64,7 +64,7 @@ export default function Home({
 } : {
   banner: ContentfulImage,
   textContent: any
-  artists: any[]
+  artists?: any[]
   headerData: any
 }) {
   return (
@@ -83,7 +83,8 @@ export default function Home({
         )}
 
         {
-          artists.map((artist: any) => {
+          artists?.map((artist: any) => {
+            console.log('🚀 || artists.map || artist:', artist)
             return (
               <Artist 
               key={artist.sys.id} 
