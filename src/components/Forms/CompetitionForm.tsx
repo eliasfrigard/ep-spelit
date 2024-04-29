@@ -1,12 +1,19 @@
 import React from 'react'
 import AnimateIn from '../AnimateIn'
 
+import TextField from './Fields/TextField'
+import DropdownField from './Fields/DropdownField'
+import SubmitButton from './Fields/SubmitButton'
+
 const Form = ({ 
     subtitle = 'Tästä voit ilmoittautua spelien soittokilpailuun!'
   }:{
     subtitle?: string
   }) => {
+    const [sending, setSending] = React.useState(false)
+    const [formHasBeenSent, setFormHasBeenSent] = React.useState(false)
     const [formType, setFormType] = React.useState('06438a38-1d24-4343-91c5-7f2d6e5393c8')
+
     const [firstName, setFirstName] = React.useState('')
     const [lastName, setLastName] = React.useState('')
     const [email, setEmail] = React.useState('')
@@ -14,6 +21,13 @@ const Form = ({
     const [competitionType, setCompetitionType] = React.useState('')
     const [series, setSeries] = React.useState('')
     const [birthDate, setBirthDate] = React.useState('')
+
+    const competitionTypes = [
+      'mandoliininsoiton SM kilpailu',
+      'huuliharpunsoiton SM kilpailu',
+      '1-rivinen haitari Spelimestaruuskilpailu',
+      '2-rivinen haitari Spelimestaruuskilpailu'
+    ]
 
     const oneRowSeriesValues = [
       'yleinen', 'yli 50 v.'
@@ -29,6 +43,8 @@ const Form = ({
 
     const handleFormSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+
+      setSending(true)
   
       const response = await fetch('/api/competition', {
         method: 'POST',
@@ -37,6 +53,19 @@ const Form = ({
           'Content-Type': 'application/json'
         }
       })
+
+      if (response.ok) {
+        setSending(false)
+        setFormHasBeenSent(true)
+        setFormType('06438a38-1d24-4343-91c5-7f2d6e5393c8')
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPhone('')
+        setCompetitionType('')
+        setSeries('')
+        setBirthDate('')
+      }
     }  
 
   return (
@@ -45,101 +74,115 @@ const Form = ({
       <h2 className="text-lg font-semibold leading-7 text-[#283740]/60">Ilmoittautumislomake</h2>
       <p className="mt-1 text-sm leading-6 text-gray-600">{subtitle}</p>
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
-        <div className="sm:col-span-full hidden">
-          <label htmlFor="first-name" className="block text-sm font-bold leading-6 text-[#283740]/60">Form Type</label>
-          <div className="mt-2">
-            <input onChange={(e) => setFormType(e.target.value)} value={formType} type="text" name="first-name" id="first-name" autoComplete="given-name" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
+        <TextField
+          type="text"
+          name="form-type"
+          label="Form Type"
+          value={formType}
+          placeholder="Form Type"
+          handleChange={setFormType}
+          className='hidden'
+          fullSize
+        />
 
-        <div className="sm:col-span-full">
-          <label htmlFor="amount" className="block text-sm font-bold leading-6 text-[#283740]/60">Kilpailulaji</label>
-          <div className="mt-2">
-            <select onChange={(e) => setCompetitionType(e.target.value)} value={competitionType} name="amount" id="amount" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6">
-              <option value="mandoliininsoiton SM kilpailu">mandoliininsoiton SM kilpailu</option>
-              <option value="huuliharpunsoiton SM kilpailu">huuliharpunsoiton SM kilpailu</option>
-              <option value="1-rivinen haitari Spelimestaruuskilpailu">1-rivinen haitari Spelimestaruuskilpailu</option>
-              <option value="2-rivinen haitari Spelimestaruuskilpailu">2-rivinen haitari Spelimestaruuskilpailu</option>
-            </select>
-          </div>
-        </div>
+        <DropdownField
+          name="competition-type"
+          label="Kilpailulaji"
+          value={competitionType}
+          options={competitionTypes}
+          handleChange={setCompetitionType}
+          fullSize
+        />
 
         {
           competitionType === '1-rivinen haitari Spelimestaruuskilpailu' && (
-            <div className="sm:col-span-full">
-              <label htmlFor="amount" className="block text-sm font-bold leading-6 text-[#283740]/60">Sarja</label>
-              <div className="mt-2">
-                <select onChange={(e) => setSeries(e.target.value)} value={series} name="amount" id="amount" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6">
-                  {
-                    oneRowSeriesValues.map((value, index) => (
-                      <option key={index} value={value}>{value}</option>
-                    ))
-                  }
-                </select>
-              </div>
-            </div>
+            <DropdownField
+              name="series"
+              label="Sarja"
+              value={series}
+              options={oneRowSeriesValues}
+              handleChange={setSeries}
+              fullSize
+            />
           )
         }
 
         {
           competitionType === '2-rivinen haitari Spelimestaruuskilpailu' && (
-            <div className="sm:col-span-full">
-              <label htmlFor="amount" className="block text-sm font-bold leading-6 text-[#283740]/60">Sarja</label>
-              <div className="mt-2">
-                <select onChange={(e) => setSeries(e.target.value)} value={series} name="amount" id="amount" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6">
-                  {
-                    twoRowSeriesValues.map((value, index) => (
-                      <option key={index} value={value}>{value}</option>
-                    ))
-                  }
-                </select>
-              </div>
-            </div>
+            <DropdownField
+              name="series"
+              label="Sarja"
+              value={series}
+              options={twoRowSeriesValues}
+              handleChange={setSeries}
+              fullSize
+            />
           )
         }
 
         {
-          (series === 'Alle 8 vuotiaat' || series === 'Alle 12 vuotiaat' || series === 'Alle 15 vuotiaat' || series === 'Alle 18 vuotiaat') && (
-            <div className="sm:col-span-full">
-              <label htmlFor="birthDate" className="block text-sm font-bold leading-6 text-[#283740]/60">Syntymäaika</label>
-              <div className="mt-2">
-                <input onChange={(e) => setBirthDate(e.target.value)} value={birthDate} type="date" name="birthDate" id="birthDate" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
-              </div>
-            </div>
+          (
+            series === 'Alle 8 vuotiaat' || 
+            series === 'Alle 12 vuotiaat' || 
+            series === 'Alle 15 vuotiaat' || 
+            series === 'Alle 18 vuotiaat'
+          ) && (
+            <TextField
+              type="date"
+              name="birthDate"
+              label="Syntymäaika"
+              value={birthDate}
+              placeholder="Syntymäaika"
+              handleChange={setBirthDate}
+              fullSize
+            />
           )
         }
 
-        <div className="sm:col-span-3">
-          <label htmlFor="first-name" className="block text-sm font-bold leading-6 text-[#283740]/60">Etunimi</label>
-          <div className="mt-2">
-            <input onChange={(e) => setFirstName(e.target.value)} value={firstName} type="text" name="first-name" id="first-name" autoComplete="given-name" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
+        <TextField
+          type="text"
+          name="first-name"
+          label="Etunimi"
+          value={firstName}
+          placeholder="Etunimi"
+          handleChange={setFirstName}
+        />
 
-        <div className="sm:col-span-3">
-          <label htmlFor="last-name" className="block text-sm font-bold leading-6 text-[#283740]/60">Sukunimi</label>
-          <div className="mt-2">
-            <input onChange={(e) => setLastName(e.target.value)} value={lastName} type="text" name="last-name" id="last-name" autoComplete="family-name" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
+        <TextField
+          type="text"
+          name="last-name"
+          label="Sukunimi"
+          value={lastName}
+          placeholder="Sukunimi"
+          handleChange={setLastName}
+        />
 
-        <div className="sm:col-span-3">
-          <label htmlFor="email" className="block text-sm font-bold leading-6 text-[#283740]/60">Sähköposti</label>
-          <div className="mt-2">
-            <input onChange={(e) => setEmail(e.target.value)} value={email} id="email" name="email" type="email" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
+        <TextField
+          type="email"
+          name="email"
+          label="Sähköposti"
+          value={email}
+          placeholder="Sähköposti"
+          handleChange={setEmail}
+        />
 
-        <div className="sm:col-span-3">
-          <label htmlFor="phone" className="block text-sm font-bold leading-6 text-[#283740]/60">Puhelinnumero</label>
-          <div className="mt-2">
-            <input onChange={(e) => setPhone(e.target.value)} value={phone} id="phone" name="phone" type="tel" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
+        <TextField
+          type="tel"
+          name="phone"
+          label="Puhelinnumero"
+          value={phone}
+          placeholder="Puhelinnumero"
+          handleChange={setPhone}
+        />
       </div>
     </AnimateIn>
-    
-    <button onClick={(e) => handleFormSubmit(e)} className='cursor-pointer w-full h-12 bg-red-500/70 text-white rounded-lg font-bold tracking-wide hover:scale-105 duration-300 hover:bg-red-500/100'>Lähetä viesti</button>
+
+    <SubmitButton
+      sending={sending}
+      handleSubmit={handleFormSubmit}
+      formHasBeenSent={formHasBeenSent}
+    />
+
   </form>
   
   )

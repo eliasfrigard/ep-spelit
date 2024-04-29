@@ -1,6 +1,8 @@
 import React from 'react'
 import AnimateIn from '../AnimateIn'
 
+import SubmitButton from './Fields/SubmitButton'
+
 const Form = ({
     productType,
     subtitle
@@ -8,7 +10,10 @@ const Form = ({
     productType: string
     subtitle: string
   }) => {
+    const [sending, setSending] = React.useState(false)
+    const [formHasBeenSent, setFormHasBeenSent] = React.useState(false)
     const [formType, setFormType] = React.useState('06438a38-1d24-4343-91c5-7f2d6e5393c8')
+
     const [firstName, setFirstName] = React.useState('')
     const [lastName, setLastName] = React.useState('')
     const [email, setEmail] = React.useState('')
@@ -18,25 +23,28 @@ const Form = ({
 
     const handleFormSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      setSending(true)
 
-      let response
+      const endpoint = productType === 'history' ? '/api/history' : '/api/music'
+      
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: JSON.stringify({formType, firstName, lastName, email, phone, address, amount}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
-      if (productType === 'history') {
-        response = await fetch('/api/history', {
-          method: 'POST',
-          body: JSON.stringify({formType, firstName, lastName, email, phone, address, amount}),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-      } else if (productType === 'music') {
-        response = await fetch('/api/music', {
-          method: 'POST',
-          body: JSON.stringify({formType, firstName, lastName, email, phone, address, amount}),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
+      if (response.ok) {
+        setSending(false)
+        setFormHasBeenSent(true)
+        setFormType('06438a38-1d24-4343-91c5-7f2d6e5393c8')
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPhone('')
+        setAddress('')
+        setAmount('1')
       }
     }
 
@@ -103,9 +111,12 @@ const Form = ({
       </div>
     </AnimateIn>
     
-    <button onClick={(e) => handleFormSubmit(e)} className='cursor-pointer w-full h-12 bg-red-500/70 text-white rounded-lg font-bold tracking-wide hover:scale-105 duration-300 hover:bg-red-500/100'>Lähetä viesti</button>
-  </form>
-  
+      <SubmitButton
+        sending={sending}
+        handleSubmit={handleFormSubmit}
+        formHasBeenSent={formHasBeenSent}
+      />
+    </form>  
   )
 }
 
