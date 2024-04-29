@@ -1,6 +1,8 @@
 import Banner from "@/components/Banner"
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
+import Form from "@/components/Forms/CompetitionForm"
+import Divider from "@/components/Divider"
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../../types'
@@ -72,10 +74,10 @@ export default function Home({
         />
       )}
 
-      <div className='py-8 flex flex-col justify-center items-center gap-8 lg:gap-16'>
-        {textContent && (
-          <TextLayout text={textContent} className='text-primary-600' />
-        )}
+      <div className='flex flex-col w-full justify-center items-center py-8 lg: gap-8 lg:gap-16'>
+        <TextLayout text={textContent} className='text-primary-600' />
+        <Divider className='w-2/3' />
+        <Form />
       </div>
     </Layout>
   )
