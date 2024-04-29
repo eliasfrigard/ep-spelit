@@ -50,7 +50,7 @@ export async function getStaticProps() {
     props: {
       banner: bannerImage,
       textContent: page.artistText  || null,
-      artists: page.artists,
+      artists: page.artists || null,
       headerData,
     },
   }
