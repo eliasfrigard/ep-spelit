@@ -1,6 +1,7 @@
 import Layout from "@/layouts/default"
 import TextLayout from "@/components/TextLayout"
 import Banner from "@/components/Banner"
+import Video from "@/components/Video"
 
 import { createClient } from 'contentful'
 import { ContentfulImage } from '../types'
@@ -28,7 +29,8 @@ export async function getStaticProps() {
     return {
       props: {
         banner: null,
-        textContent: page.textContent,
+        textContent: page.textContent  || null,
+        videos: page.videos || [],
         headerData,
       },
     }
@@ -47,7 +49,8 @@ export async function getStaticProps() {
   return {
     props: {
       banner: bannerImage,
-      textContent: page.textContent,
+      textContent: page.textContent || null,
+      videos: page.videos || [],
       headerData,
     },
   }
@@ -56,12 +59,17 @@ export async function getStaticProps() {
 export default function Home({
   banner,
   textContent,
-  headerData
+  headerData,
+  videos
 } : {
   banner: ContentfulImage,
   textContent: any
   headerData: any
+  videos: any
 }) {
+  console.log('🚀 || textContent:', textContent)
+  const firstVideo = videos[0]
+
   return (
     <Layout headerData={headerData} pageTitle={headerData.board.title}>
       {banner && (
@@ -72,9 +80,45 @@ export default function Home({
         />
       )}
 
-      <div className="py-8 lg:">
-        <TextLayout text={textContent} className='text-primary-600' />
+      <div className="py-14 flex flex-col justify-center items-center gap-14">
+        {
+          textContent && (
+            <TextLayout text={textContent} className='text-primary-600' />
+          )
+        }
+
+        {
+          videos?.length > 0 && (
+            <div className='w-full px-3 flex justify-center items-center'>
+              <div className='container flex flex-col justify-center items-center gap-3 lg:gap-6'>
+                <div className='w-full aspect-video'>
+                  <Video
+                    prominent={true}
+                    key={firstVideo.fields.youTubeLink}
+                    title={firstVideo.fields.title}
+                    link={firstVideo.fields.youTubeLink}
+                    />
+                </div>
+
+                <div className={`w-full grid grid-flow-row ${videos.length > 1 && 'lg:grid-cols-2'} gap-3 lg:gap-6`}>
+                  {videos.map((video: any, index: any) => {
+                  if (index === 0) return null
+                  return (
+                      <Video
+                      prominent={false}
+                      key={video.fields.youTubeLink}
+                      title={video.fields.title}
+                      link={video.fields.youTubeLink}
+                      />
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          )
+        }
       </div>
     </Layout>
   )
+        console.log('🚀 || textContent:', textContent)
 }
