@@ -83,7 +83,7 @@ export default function Home({
       <div className="py-8 lg:py-14 flex flex-col justify-center items-center gap-8 lg:gap-14">
         {
           textContent && (
-            <TextLayout text={textContent} className='text-primary-600' />
+            <TextLayout text={textContent} className='text-primary-600 prose-headings:text-red-500 prose-h1:text-5xl prose-h2:text-3xl gap-2' />
           )
         }
 

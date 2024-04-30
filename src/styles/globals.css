@@ -25,15 +25,8 @@ a {
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Khorla';
-  src: url('/fonts/Khorla.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Forrest';
-  src: url('/fonts/Forrest.otf') format('opentype');
+  font-family: 'English';
+  src: url('/fonts/oldenglishtextmt.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -156,6 +149,10 @@ a {
   .dropdownItem:hover .dropdownIcon {
     color: theme('colors.white');
     transition-duration: 100ms;
+  }
+
+  .fontEnglish { 
+    font-family: 'English';
   }
 }
 
