@@ -83,18 +83,6 @@ const Dropdown = ({
                   onClick={() => setIsMobileMenuOpen((cur) => !cur)}
                 >
                   {label}
-                  <ChevronDownIcon
-                    strokeWidth={2.5}
-                    className={`hidden h-2 w-2 transition-transform lg:block ease-linear${
-                      isMenuOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                  <ChevronDownIcon
-                    strokeWidth={2.5}
-                    className={`block h-2 w-2 transition-transform lg:hidden ease-linear ${
-                      isMobileMenuOpen ? "rotate-180" : ""
-                    }`}
-                  />
                 </ListItem>
               </div>
             </MenuHandler>
