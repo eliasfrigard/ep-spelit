@@ -7,6 +7,7 @@ const Template = ({
   email, 
   phone,
   artist,
+  website,
   time,
   info,
   sound,
@@ -17,6 +18,7 @@ const Template = ({
   email: string
   phone: string
   artist: string
+  website: string
   time: string
   info: string
   sound: string
@@ -28,6 +30,7 @@ const Template = ({
       <p><b>Sähköposti:</b> {email}</p>
       <p><b>Puhelinnumero:</b> {phone}</p>
       <p><b>Esiintyvän ryhmän nimi:</b> {artist}</p>
+      <p><b>Esiintyvän ryhmän nettisivu:</b> {website}</p>
       <p><b>Esiintymisaikatoive:</b> {time}</p>
       <p><b>Kerro ryhmästäsi:</b> {info}</p>
       <p><b>Terveiset äänentoistolle:</b> {sound}</p>

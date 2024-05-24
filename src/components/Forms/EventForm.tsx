@@ -19,6 +19,7 @@ const Form = ({
   const [email, setEmail] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [artist, setArtist] = React.useState('')
+  const [website, setWebsite] = React.useState('')
   const [time, setTime] = React.useState('')
   const [info, setInfo] = React.useState('')
   const [sound, setSound] = React.useState('')
@@ -29,7 +30,7 @@ const Form = ({
 
     const response = await fetch('/api/event', {
       method: 'POST',
-      body: JSON.stringify({formType, eventType, firstName, lastName, email, phone, artist, time, info, sound}),
+      body: JSON.stringify({formType, eventType, firstName, lastName, email, phone, artist, website, time, info, sound}),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -44,6 +45,7 @@ const Form = ({
       setEmail('')
       setPhone('')
       setArtist('')
+      setWebsite('')
       setTime('')
       setInfo('')
       setSound('')
@@ -95,6 +97,13 @@ const Form = ({
           <label htmlFor="artist" className="block text-sm font-bold leading-6 text-[#283740]/60">Esiintyvän ryhmän nimi</label>
           <div className="mt-2">
             <input onChange={(e) => setArtist(e.target.value)} value={artist} id="artist" name="artist" type="text" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+
+        <div className="sm:col-span-full">
+          <label htmlFor="website" className="block text-sm font-bold leading-6 text-[#283740]/60">Esiintyvän ryhmän nettisivu</label>
+          <div className="mt-2">
+            <input onChange={(e) => setWebsite(e.target.value)} value={website} id="website" name="website" type="text" className="block w-full rounded-md border-0 py-1.5 text-[#283740]/60 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#283740]/60 sm:text-sm sm:leading-6" />
           </div>
         </div>
 
