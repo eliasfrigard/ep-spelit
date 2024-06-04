@@ -15,6 +15,13 @@ const TextField = ({
   handleChange: (value: string) => void,
   fullSize?: boolean,
 }) => {
+  // Default to first option.
+  React.useEffect(() => {
+    if (!value && options.length > 0) {
+      handleChange(options[0])
+    }
+  }, [])
+
   return (
     <div className={`${fullSize ? 'sm:col-span-full' : 'sm:col-span-3'}`}>
       <label htmlFor={name} className="block text-sm font-bold leading-6 text-[#283740]/60">{label}</label>

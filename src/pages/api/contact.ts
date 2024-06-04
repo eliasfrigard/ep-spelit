@@ -11,8 +11,8 @@ const send = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const { data, error } = await resend.emails.send({
-    from: 'info@johannesgeworkianhellman.se',
-    to: ['frigard.elias@gmail.com'],
+    from: 'Eteläpohjalaiset Spelit <noreply@email.ep-spelit.xyz>',
+    to: ['ep.spelit@gmail.com'],
     subject: 'Uusi yhteydenotto!',
     react: EmailTemplate(req.body),
     text: 'Sent from Resend API',
