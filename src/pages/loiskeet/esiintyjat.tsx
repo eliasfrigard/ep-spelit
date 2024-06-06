@@ -84,7 +84,6 @@ export default function Home({
 
         {
           artists?.map((artist: any) => {
-            console.log('🚀 || artists.map || artist:', artist)
             return (
               <Artist 
               key={artist.sys.id} 

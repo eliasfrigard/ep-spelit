@@ -67,7 +67,6 @@ export default function Home({
   headerData: any
   videos: any
 }) {
-  console.log('🚀 || textContent:', textContent)
   const firstVideo = videos[0]
 
   return (
@@ -120,5 +119,4 @@ export default function Home({
       </div>
     </Layout>
   )
-        console.log('🚀 || textContent:', textContent)
 }
