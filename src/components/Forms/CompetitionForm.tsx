@@ -26,7 +26,8 @@ const Form = ({
       'mandoliininsoiton SM kilpailu',
       'huuliharpunsoiton SM kilpailu',
       '1-rivinen haitari Spelimestaruuskilpailu',
-      '2-rivinen haitari Spelimestaruuskilpailu'
+      '2-rivinen haitari Spelimestaruuskilpailu',
+      'yhtyeet'
     ]
 
     const oneRowSeriesValues = [
