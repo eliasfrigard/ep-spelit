@@ -14,7 +14,7 @@ const Video = ({
   className?: string
 }) => {
   return (
-    <AnimateIn className={`w-full centerContent flex-col ${className}`}>
+    <div className={`w-full centerContent flex-col ${className}`}>
       <iframe
         title={title}
         src={`https://www.youtube.com/embed/${getYoutubeID(link)}`}
@@ -24,7 +24,7 @@ const Video = ({
         loading='lazy'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
       ></iframe>
-    </AnimateIn>
+    </div>
   )
 }
 
