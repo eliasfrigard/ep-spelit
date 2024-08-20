@@ -28,7 +28,7 @@ export async function getStaticProps() {
     return {
       props: {
         banner: null,
-        textContent: page.text,
+        textContent: page?.text,
         headerData,
       },
     }

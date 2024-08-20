@@ -49,8 +49,8 @@ export async function getStaticProps() {
   return {
     props: {
       banner: bannerImage,
-      textContent: page.artistText  || null,
-      artists: page.artists || null,
+      textContent: page?.artistText  || null,
+      artists: page?.artists || null,
       headerData,
     },
   }
