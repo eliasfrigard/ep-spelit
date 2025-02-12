@@ -10,15 +10,15 @@ import { BLOCKS } from '@contentful/rich-text-types'
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
-      if (node.data.target.sys.contentType.sys.id === "video") {
+      if (node.data.target.sys.contentType.sys.id === 'video') {
         return (
           <Video
-            className="pt-0 pb-2 md:pt-4 md:pb-5"
+            className='pt-0 pb-2 md:pt-4 md:pb-5'
             key={node.data.target.fields.name}
             title={node.data.target.fields.name}
             link={node.data.target.fields.youTubeLink}
           />
-        );
+        )
       }
     },
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
@@ -26,7 +26,7 @@ const options = {
       const { url, fileName } = node.data.target.fields.file
 
       if (contentType.includes('image')) {
-      return (
+        return (
           <a href={`http:${url}`}>
             <Image
               src={`https:${url}`}
@@ -51,15 +51,7 @@ const options = {
   },
 }
 
-const TextLayout = ({ 
-  text, 
-  type = 'dynamic', 
-  className,
-} : {
-  text: any
-  type?: string
-  className?: string
-}) => {
+const TextLayout = ({ text, type = 'dynamic', className }: { text: any; type?: string; className?: string }) => {
   let textLength = 0
 
   text?.content.forEach((t: any) => {
@@ -90,7 +82,7 @@ const TextLayout = ({
   if (type === 'presentation') {
     return (
       <div
-        className={`prose py-0 my-0 leading-[2rem] font-mont prose-headings:font-mont prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-a:text-accent-500 flex flex-col justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-3 px-4 lg:px-0 prose-li:list-none prose-li:pl-0 prose-ul:pl-0 prose-li:mt-0 prose-li:mb-0 ${className}`}
+        className={`prose py-0 my-0 leading-[2rem] font-mont prose-headings:font-mont prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-a:text-accent-500 flex flex-col justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-3 px-4 lg:px-0 prose-li:list-none prose-li:pl-0 prose-ul:pl-0 prose-li:mt-0 prose-li:mb-0 text-pretty ${className}`}
       >
         {documentToReactComponents(textDocument, options)}
       </div>
@@ -100,7 +92,7 @@ const TextLayout = ({
   if (true) {
     return (
       <Container
-        className={`prose py-0 my-0 max-w-4xl leading-[2rem] tracking-wide font-mont text-center prose-headings:fontEnglish prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-a:text-accent-500 flex flex-col items-center justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-4 px-4 lg:px-0 prose-li:list-none prose-li:mt-0 prose-li:mb-0 ${className}`}
+        className={`prose py-0 my-0 max-w-4xl leading-[2rem] tracking-wide font-mont text-center prose-headings:fontEnglish prose-blockquote:border-primary-500 prose-blockquote:border-opacity-10 prose-blockquote:opacity-80 prose-blockquote:rounded prose-a:text-accent-500 flex flex-col items-center justify-center prose-blockquote:my-0 prose-p:my-0 prose-headings:my-0 space-y-4 px-4 lg:px-0 prose-li:list-none prose-li:mt-0 prose-li:mb-0 text-pretty ${className}`}
       >
         {documentToReactComponents(textDocument, options)}
       </Container>
